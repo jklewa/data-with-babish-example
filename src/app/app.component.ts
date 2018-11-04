@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'data-with-babish';
-  data_url = "https://raw.githubusercontent.com/jklewa/data-with-babish/master/babish.json";
+  data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/babish.json';
   episodes: Observable<any[]>;
 
   constructor(http: HttpClient) {
