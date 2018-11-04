@@ -22,7 +22,11 @@
             <span class="muted"> ({{ r.ingredients.length }} items)</span>
         </li>
     </ul>
-    <a [href]="ep.youtube_link" target="_blank" class="yt-link">Watch on YouTube</a>
+    <div class="yt-link">
+        <a [href]="ep.youtube_link" target="_blank">
+            <img src="assets/yt-rgb.png" alt="Watch on YouTube">
+        </a>
+    </div>
   </div>
 </div>
 

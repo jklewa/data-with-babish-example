@@ -32,8 +32,12 @@
 
     .yt-link {
         text-align: center;
-        display: block;
-        margin-top: 10px;
+        margin-top: auto;
+
+        img {
+            width: 80px;
+            padding: 13px 13px 2px;
+        }
     }
 }
 
