@@ -16,6 +16,7 @@ install:
   - npm install -g yarn
 
 script:
+  - yarn
   - yarn lint
   - yarn build --base-href https://jklewa.github.io/data-with-babish-ghpages/
 deploy:
