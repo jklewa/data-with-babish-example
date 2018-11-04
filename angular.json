@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "data-with-babish-ghpages": {
+    "data-with-babish": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/data-with-babish-ghpages",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "data-with-babish-ghpages:build"
+            "browserTarget": "data-with-babish:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "data-with-babish-ghpages:build:production"
+              "browserTarget": "data-with-babish:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "data-with-babish-ghpages:build"
+            "browserTarget": "data-with-babish:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "data-with-babish-ghpages-e2e": {
+    "data-with-babish-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "data-with-babish-ghpages:serve"
+            "devServerTarget": "data-with-babish:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "data-with-babish-ghpages:serve:production"
+              "devServerTarget": "data-with-babish:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "data-with-babish-ghpages"
+  "defaultProject": "data-with-babish"
 }
