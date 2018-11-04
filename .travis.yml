@@ -13,11 +13,11 @@ cache:
     - node_modules
 
 install:
-  - npm install -g yarn
+  - npm install
 
 script:
-  - yarn lint
-  - yarn build --base-href https://jklewa.github.io/data-with-babish-ghpages/
+  - ng lint
+  - ng build --base-href https://jklewa.github.io/data-with-babish-ghpages/
 deploy:
   provider: pages
   skip_cleanup: true
