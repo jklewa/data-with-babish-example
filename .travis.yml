@@ -17,7 +17,7 @@ install:
 
 script:
   - ng lint
-  - ng build --prod --base-href https://jklewa.github.io/data-with-babish-ghpages/
+  - ng build --prod --base-href https://jklewa.github.io/data-with-babish-example/
 deploy:
   provider: pages
   skip_cleanup: true
