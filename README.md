@@ -1,6 +1,6 @@
 # Data With Babish Angular7 Site
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+[![Build Status](https://travis-ci.org/jklewa/data-with-babish-example.svg?branch=master)](https://travis-ci.org/jklewa/data-with-babish-example) This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
 ## Development server
 
