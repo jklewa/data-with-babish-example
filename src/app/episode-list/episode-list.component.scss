@@ -1,0 +1,62 @@
+.episode-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -5px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.episode {
+    flex: 1 1 300px;
+    margin: 5px;
+    border: 1px solid lightblue;
+    border-radius: 15px;
+    padding: 7px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+
+    .episode-name {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .sub-name {
+        font-weight: normal;
+    }
+
+    .recipe-name { }
+
+    .episode-links {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+
+        .bwb-link img {
+            width: 33px;
+            height: 33px;
+            padding: 7px 7px 0;
+        }
+
+        .yt-link img {
+            width: 80px;
+            height: 18px;
+            padding: 14px 7px 7px;
+        }
+    }
+
+    &:hover {
+        border: 1px solid blue;
+    }
+}
+
+ul {
+    padding-left: 20px;
+    margin: 5px 0 0;
+}
+
+.muted {
+    color: grey;
+}

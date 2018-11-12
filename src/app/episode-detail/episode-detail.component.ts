@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { EpisodeService, Episode } from '../episode.service';
+
+@Component({
+  selector: 'app-episode-detail',
+  templateUrl: './episode-detail.component.html',
+  styleUrls: ['./episode-detail.component.scss']
+})
+export class EpisodeDetailComponent implements OnInit {
+
+  id: string;
+  ep: Episode;
+
+  constructor(
+    private route: ActivatedRoute,
+    private episodeService: EpisodeService) { }
+
+  ngOnInit() {
+     this.id = this.route.snapshot.paramMap.get('id');
+     this.episodeService.getEpisode(this.id)
+       .subscribe(episode => this.ep = episode[0]);
+  }
+
+}

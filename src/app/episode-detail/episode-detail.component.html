@@ -1,0 +1,42 @@
+<div class="episode-details">
+    <div class="episode-name">
+        {{ep.episode_name.split('inspired by')[0]}}
+        <div
+            *ngIf="ep.episode_name.includes('inspired by')"
+            class="sub-name">
+            inspired&nbsp;by{{ep.episode_name.split('inspired by')[1]}}
+        </div>
+    </div>
+    {{ ep.published | date:'fullDate' }}
+
+    <div class="episode-links">
+        <div class="bwb-link">
+            <a [href]="ep.episode_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
+            </a>
+        </div>
+
+        <div class="yt-link">
+            <a [href]="ep.youtube_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/yt-rgb.png" alt="Watch on YouTube">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="recipe-list">
+  <div class="recipe" *ngFor="let recipe of ep.recipes">
+    <span class="recipe-name">{{ recipe.method }}</span>
+    <span class="muted"> ({{ recipe.ingredients.length }} items)</span>
+    <ul>
+        <li class="ingredient" *ngFor="let ing of recipe.ingredients">
+            {{ ing | json }}
+        </li>
+    </ul>
+  </div>
+</div>
+
+<pre>
+Raw data from <a href="https://github.com/jklewa/data-with-babish#babishjson" target="_blank">babish.json</a>:
+{{ ep | json }}
+</pre>

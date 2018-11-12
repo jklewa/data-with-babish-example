@@ -1,53 +1,9 @@
-.episode-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -5px;
-    width: 85%;
-    margin: 0 auto;
+h1 {
+    margin-bottom: 5px;
 }
 
-.episode {
-    flex: 1 1 300px;
-    margin: 5px;
-    border: 1px solid lightblue;
-    border-radius: 15px;
-    padding: 7px 10px;
-
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-
-    .episode-name {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-    .sub-name {
-        margin-left: 15px;
-        font-weight: normal;
-    }
-
-    .recipe-name { }
-
-    .yt-link {
-        text-align: center;
-        margin-top: auto;
-
-        img {
-            width: 80px;
-            padding: 13px 13px 2px;
-        }
-    }
-}
-
-.muted {
-    color: grey;
-}
-
-ul {
-    padding-left: 20px;
-    margin: 5px 0 0;
+nav {
+    margin-bottom: 10px;
 }
 
 .github-ribbon {

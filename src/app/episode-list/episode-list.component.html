@@ -1,0 +1,33 @@
+<div class="episode-list">
+  <div class="episode" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.id">
+    <div class="episode-name">
+        {{ep.episode_name.split('inspired by')[0]}}
+        <div
+            *ngIf="ep.episode_name.includes('inspired by')"
+            class="sub-name">
+            inspired&nbsp;by{{ep.episode_name.split('inspired by')[1]}}
+        </div>
+    </div>
+    {{ ep.published | date:'fullDate' }} // {{ ep.recipes.length }} recipes
+    <ul>
+        <li class="recipe" *ngFor="let r of ep.recipes">
+            <span class="recipe-name">{{ r.method }}</span>
+            <span class="muted"> ({{ r.ingredients.length }} items)</span>
+        </li>
+    </ul>
+
+    <div class="episode-links">
+        <div class="bwb-link">
+            <a [href]="ep.episode_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
+            </a>
+        </div>
+
+        <div class="yt-link">
+            <a [href]="ep.youtube_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/yt-rgb.png" alt="Watch on YouTube">
+            </a>
+        </div>
+    </div>
+  </div>
+</div>
