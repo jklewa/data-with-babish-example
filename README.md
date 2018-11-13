@@ -1,6 +1,10 @@
 # Data With Babish Angular7 Site
 
-[![Build Status](https://travis-ci.org/jklewa/data-with-babish-example.svg?branch=master)](https://travis-ci.org/jklewa/data-with-babish-example) This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+An interactive Binging with Babish episode data viewer, using the data from [data-with-babish](https://github.com/jklewa/data-with-babish/)
+
+Viewable at https://jklewa.github.io/data-with-babish-example/
+
+[![Build Status](https://travis-ci.org/jklewa/data-with-babish-example.svg?branch=master)](https://travis-ci.org/jklewa/data-with-babish-example)
 
 ## Development server
 
@@ -25,3 +29,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
