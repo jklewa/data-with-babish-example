@@ -15,7 +15,10 @@ export class EpisodeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private episodeService: EpisodeService) { }
+    private episodeService: EpisodeService
+  ) {
+    this.ep = new Episode({});
+  }
 
   ngOnInit() {
      this.id = this.route.snapshot.paramMap.get('id');

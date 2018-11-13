@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let item of groupedIngredients | keyvalue">
+    {{ item.key }} ({{ item.value.length }} uses)
+
+    <ul>
+      <li *ngFor="let i of item.value">
+        <pre>{{ i.raw }} <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
+      </li>
+    </ul>
+  </li>
+</ul>
