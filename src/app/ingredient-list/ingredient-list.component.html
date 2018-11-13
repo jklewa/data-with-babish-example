@@ -1,9 +1,14 @@
+<div class="sort-options">
+  <span (click)="currentSort = ingredientsByUses" [ngClass]="{'selected': currentSort === ingredientsByUses}">Sorted by Uses</span> |
+  <span (click)="currentSort = ingredientsByName" [ngClass]="{'selected': currentSort === ingredientsByName}">Sorted by Name</span>
+</div>
+
 <ul>
-  <li *ngFor="let item of groupedIngredients | keyvalue">
-    {{ item.key }} ({{ item.value.length }} uses)
+  <li *ngFor="let ing of currentSort">
+    {{ ing }} ({{ groupedIngredients[ing].length }} uses)
 
     <ul>
-      <li *ngFor="let i of item.value">
+      <li *ngFor="let i of groupedIngredients[ing]">
         <pre>{{ i.raw }} <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
       </li>
     </ul>

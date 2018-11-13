@@ -1,0 +1,14 @@
+.sort-options {
+  span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .selected {
+    font-weight: bold;
+  }
+  .selected:hover {
+    cursor: default;
+    text-decoration: none;
+  }
+}
