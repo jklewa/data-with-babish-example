@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, single, first, filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { isVeganIngredientList } from 'is-vegan';
 
 export class Episode {
   id = '';
@@ -13,17 +14,30 @@ export class Episode {
 
   constructor(data) {
     Object.keys(data).forEach(key => {
-      this[key] = data[key];
+      if (key == 'recipes') {
+        this[key] = data[key].map(r => new Recipe(r['method'], r['ingredients']))
+      } else {
+        this[key] = data[key];
+      }
     });
 
     this.id = this.episode_link.split('/').slice(-1)[0];
   }
+
+  isVegan() {
+    return this.recipes.every(r => r.isVegan());
+  }
 }
 
 
-export interface Recipe {
-  method: string;
-  ingredients: any[4][];
+export class Recipe {
+  constructor(
+    public method: string,
+    public ingredients: any[4][]) {}
+
+  isVegan() {
+    return this.ingredients.every(i => isVeganIngredientList(i[2].split(' ')));
+  }
 }
 
 

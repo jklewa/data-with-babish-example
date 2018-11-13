@@ -1,5 +1,5 @@
 <div class="episode-list">
-  <div class="episode" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.id">
+  <div class="episode" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.id" [ngClass]="{'not-vegan': !ep.isVegan()}">
     <div class="episode-name">
         {{ep.episode_name.split('inspired by')[0]}}
         <div
@@ -10,7 +10,7 @@
     </div>
     {{ ep.published | date:'fullDate' }} // {{ ep.recipes.length }} recipes
     <ul>
-        <li class="recipe" *ngFor="let r of ep.recipes">
+        <li class="recipe" *ngFor="let r of ep.recipes" [ngClass]="{'not-vegan': !r.isVegan()}">
             <span class="recipe-name">{{ r.method }}</span>
             <span class="muted"> ({{ r.ingredients.length }} items)</span>
         </li>

@@ -50,6 +50,14 @@
     &:hover {
         border: 1px solid blue;
     }
+
+    &.not-vegan {
+        opacity: .5;
+    }
+
+    .not-vegan {
+        color: red;
+    }
 }
 
 ul {
