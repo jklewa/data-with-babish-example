@@ -22,7 +22,10 @@ class Ingredient {
 export class IngredientListComponent implements OnInit {
 
   ingredients: any[];
-  groupedIngredients: any;
+  groupedIngredients: object;
+  ingredientsByName: string[];
+  ingredientsByUses: string[];
+  currentSort: string[] = null;
 
   constructor(private episodeService: EpisodeService) { }
 
@@ -34,6 +37,7 @@ export class IngredientListComponent implements OnInit {
     this.episodeService.getEpisodes()
       .subscribe(
         (episodes: Episode[]) => {
+          // Pull ingredients out of every episode with meta data about their recipe and episode
           const ingredients: Ingredient[] = [];
 
           episodes.map(ep =>
@@ -48,6 +52,7 @@ export class IngredientListComponent implements OnInit {
 
           this.ingredients = ingredients;
 
+          // Group ingredients by name
           const groupedIngredients = {};
 
           ingredients.reduce(
@@ -61,6 +66,14 @@ export class IngredientListComponent implements OnInit {
             groupedIngredients);
 
           this.groupedIngredients = groupedIngredients;
+
+          // Sorted lists
+          this.ingredientsByName = Object.keys(groupedIngredients).sort(); // sort keys alpha, asc
+
+          this.ingredientsByUses = this.ingredientsByName.slice()
+            .sort((a, b) => groupedIngredients[b].length - groupedIngredients[a].length); // sort again by num of uses, desc
+
+          this.currentSort = this.ingredientsByUses;
         },
         (error) => { console.error('Failed to fetch episodes', error); });
   }
