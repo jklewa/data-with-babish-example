@@ -1,4 +1,4 @@
-<div class="episode-details">
+<div class="episode-details" [ngClass]="{'not-vegan': !ep.isVegan()}">
     <div class="episode-name">
         {{ep.episode_name.split('inspired by')[0]}}
         <div
@@ -25,11 +25,11 @@
 </div>
 
 <div class="recipe-list">
-  <div class="recipe" *ngFor="let recipe of ep.recipes">
+  <div class="recipe" *ngFor="let recipe of ep.recipes" [ngClass]="{'not-vegan': !recipe.isVegan()}">
     <span class="recipe-name">{{ recipe.method }}</span>
     <span class="muted"> ({{ recipe.ingredients.length }} items)</span>
     <ul>
-        <li class="ingredient" *ngFor="let ing of recipe.ingredients">
+        <li class="ingredient" *ngFor="let ing of recipe.ingredients" [ngClass]="{'not-vegan': !isVegan(ing[2])}">
             {{ ing | json }}
         </li>
     </ul>
