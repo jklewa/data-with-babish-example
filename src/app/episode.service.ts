@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, single, first, filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { isVeganIngredientList } from 'is-vegan';
+import { isVeganIngredient } from 'is-vegan';
 
 export class Episode {
   id = '';
@@ -36,7 +36,7 @@ export class Recipe {
     public ingredients: any[4][]) {}
 
   isVegan() {
-    return this.ingredients.every(i => isVeganIngredientList(i[2].split(' ')));
+    return this.ingredients.every(i => isVeganIngredient(i[2]));
   }
 }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { EpisodeService, Episode } from '../episode.service';
-import { isVeganIngredientList } from 'is-vegan';
+import { isVeganIngredient } from 'is-vegan';
 
 @Component({
   selector: 'app-episode-detail',
@@ -28,7 +28,7 @@ export class EpisodeDetailComponent implements OnInit {
   }
 
   isVegan(ingredient) {
-    return isVeganIngredientList(ingredient.split(' '));
+    return isVeganIngredient(ingredient);
   }
 
 }
