@@ -30,7 +30,7 @@
     <span class="muted"> ({{ recipe.ingredients.length }} items)</span>
     <ul>
         <li class="ingredient" *ngFor="let ing of recipe.ingredients">
-            {{ ing | json }}
+            <div highlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
         </li>
     </ul>
   </div>

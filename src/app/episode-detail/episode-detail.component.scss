@@ -34,6 +34,10 @@
         margin-bottom: 10px;
         text-align: center;
     }
+
+    /deep/ .text-highlight {
+        font-weight: bold;
+    }
 }
 
 ul {

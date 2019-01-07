@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
+import { HighlightIngredientDirective } from './directives/highlight-ingredient.directive';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
     AppComponent,
     EpisodeListComponent,
     IngredientListComponent,
-    EpisodeDetailComponent
+    EpisodeDetailComponent,
+    HighlightIngredientDirective
   ],
   imports: [
     BrowserModule,
