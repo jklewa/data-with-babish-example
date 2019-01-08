@@ -35,8 +35,14 @@
         text-align: center;
     }
 
-    /deep/ .text-highlight {
-        font-weight: bold;
+    /deep/ .text-highlight-name {
+        color: blue;
+    }
+    /deep/ .text-highlight-units {
+        color: green;
+    }
+    /deep/ .text-highlight-qty {
+        color: red;
     }
 }
 
