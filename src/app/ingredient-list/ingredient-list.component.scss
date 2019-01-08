@@ -12,3 +12,13 @@
     text-decoration: none;
   }
 }
+
+/deep/ .text-highlight-name {
+  color: blue;
+}
+/deep/ .text-highlight-units {
+  color: green;
+}
+/deep/ .text-highlight-qty {
+  color: red;
+}

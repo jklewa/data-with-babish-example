@@ -9,7 +9,7 @@
 
     <ul>
       <li *ngFor="let i of groupedIngredients[ing]">
-        <pre>{{ i.raw }} <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
+        <pre><span highlightIngredient [content]="i.raw" [ingredient]="[i.qty,i.unit,i.name,i.raw]"></span> <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
       </li>
     </ul>
   </li>
