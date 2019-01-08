@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: '[highlightIngredient]'
+  selector: '[appHighlightIngredient]'
 })
 export class HighlightIngredientDirective {
 
@@ -9,13 +9,13 @@ export class HighlightIngredientDirective {
   private _ingredient: any[]; // [qty, unit, name, raw]
 
   @Input('content')
-  set content(content: string){
+  set content(content: string) {
     this._content = content;
   }
   get content(): string { return this._content; }
 
   @Input('ingredient')
-  set ingredient(ingredient: any[]){
+  set ingredient(ingredient: any[]) {
     this._ingredient = ingredient;
     const qty = this.toQty(ingredient[0]);
     const units = this.toUnit(ingredient[1]);
@@ -29,7 +29,7 @@ export class HighlightIngredientDirective {
 
   constructor(private el: ElementRef) { }
 
-  highlight(searchTerm:string, cssClass:string) {
+  highlight(searchTerm: string, cssClass: string) {
     const splitFlags = 'i';
     const matchFlags = 'gi';
     const searchPattern = new RegExp('<.*?>.*?>|(?:' + searchTerm + ')', splitFlags);
@@ -39,8 +39,8 @@ export class HighlightIngredientDirective {
     let final = '';
 
     if (searchTerm !== undefined && searchTerm != null && searchTerm.length > 0 ) {
-      let separatedText = this._content.split(searchPattern);
-      let separatedSearchedText = this._content.match(matchPattern);
+      const separatedText = this._content.split(searchPattern);
+      const separatedSearchedText = this._content.match(matchPattern);
 
       if (separatedSearchedText != null && separatedSearchedText.length > 0) {
         for (let i = 0; i < separatedText.length; i++) {
@@ -63,8 +63,8 @@ export class HighlightIngredientDirective {
     this.el.nativeElement.innerHTML = this._content;
   }
 
-  toUnit(rawUnit:string) {
-    switch(rawUnit) {
+  toUnit(rawUnit: string) {
+    switch (rawUnit) {
       case 'drop': return 'drop|dr|gt|gtt';
       case 'smidgen': return 'smidgen|smdg|smi';
       case 'pinch': return 'pinch|pn';
@@ -92,12 +92,12 @@ export class HighlightIngredientDirective {
   toQty(rawQty: string|number) {
     if (typeof rawQty === 'string') {
       return rawQty;
-    } else if(typeof rawQty === 'number') {
+    } else if (typeof rawQty === 'number') {
       let final = rawQty.toString().split('.')[0];
-      if (final === '0'){
+      if (final === '0') {
         final = '';
       }
-      switch((rawQty % 1).toFixed(3)) {
+      switch ((rawQty % 1).toFixed(3)) {
         case '0.000': break;
         case '0.250': final += ' ?¼'; break;
         case '0.500': final += ' ?½'; break;
