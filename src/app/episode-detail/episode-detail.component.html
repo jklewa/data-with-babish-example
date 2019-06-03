@@ -1,10 +1,10 @@
 <div class="episode-details">
     <div class="episode-name">
-        {{ep.episode_name.split('inspired by')[0]}}
+        {{ep.episode_name_pt1}}
         <div
-            *ngIf="ep.episode_name.includes('inspired by')"
+            *ngIf="ep.episode_name_pt2"
             class="sub-name">
-            inspired&nbsp;by{{ep.episode_name.split('inspired by')[1]}}
+            inspired&nbsp;by {{ep.episode_name_pt2}}
         </div>
     </div>
     {{ ep.published | date:'fullDate' }}
@@ -37,6 +37,6 @@
 </div>
 
 <pre>
-Raw data from <a href="https://github.com/jklewa/data-with-babish#babishjson" target="_blank">babish.json</a>:
+Raw data from <a href="https://github.com/jklewa/data-with-babish/#datasets" target="_blank">babish.json</a>:
 {{ ep | json }}
 </pre>
