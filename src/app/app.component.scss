@@ -1,3 +1,5 @@
+@import "../styles.scss";
+
 h1 {
     margin-bottom: 5px;
 }
@@ -11,4 +13,25 @@ nav {
     top: 0;
     right: 0;
     border: 0;
+}
+
+h1,h2,h3,h4,h5 {
+    color: $color-black;
+}
+
+.header {
+    text-align: center;
+    background: $color-black;
+    padding: 20px;
+    color: #FFF;
+
+    h2 {
+        margin: 10px 0 0;
+        color: #FFF;
+    }
+}
+
+.logo {
+    filter: invert(100%);
+    margin-left: -50px;
 }
