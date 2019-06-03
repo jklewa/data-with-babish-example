@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+$color-black: rgb(22,22,24);
+$color-brown: rgb(169,139,111);
+$color-yellow: rgb(223, 202, 102);
+$color-red: rgb(183,74,67);
+$color-dark-red: rgb(155,67,60);
+$color-grey: rgb(214,215,217);
+$color-dark-grey: rgb(178,179,181);
+
+
+body {
+    color: $color-black;
+    font-family: Arial;
+    margin: 0;
+}
+
+a {
+    color: $color-red;
+
+    &:hover {
+        color: $color-yellow;
+    }
+}

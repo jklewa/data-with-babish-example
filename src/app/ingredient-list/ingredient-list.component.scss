@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .sort-options {
   span:hover {
     cursor: pointer;
@@ -14,11 +16,11 @@
 }
 
 /deep/ .text-highlight-name {
-  color: blue;
+    color: $color-brown;
 }
 /deep/ .text-highlight-units {
-  color: green;
+    color: $color-yellow;
 }
 /deep/ .text-highlight-qty {
-  color: red;
+    color: $color-red;
 }

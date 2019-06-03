@@ -11,12 +11,19 @@ export class Episode {
   published = '';
   recipes: Recipe[] = [];
 
+  episode_name_pt1 = '';
+  episode_name_pt2 = '';
+
   constructor(data) {
     Object.keys(data).forEach(key => {
       this[key] = data[key];
     });
 
     this.id = this.episode_link.split('/').slice(-1)[0];
+
+    const parts = this.episode_name.split(/ inspired by | from /);
+    this.episode_name_pt1 = parts[0];
+    this.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
   }
 }
 

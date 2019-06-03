@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .episode-list {
     display: flex;
     flex-wrap: wrap;
@@ -9,7 +11,7 @@
 .episode {
     flex: 1 1 300px;
     margin: 5px;
-    border: 1px solid lightblue;
+    border: 4px solid $color-red;
     border-radius: 15px;
     padding: 7px 10px;
 
@@ -48,7 +50,8 @@
     }
 
     &:hover {
-        border: 1px solid blue;
+        border: 4px solid $color-yellow;
+        cursor: pointer;
     }
 }
 
@@ -58,5 +61,5 @@ ul {
 }
 
 .muted {
-    color: grey;
+    color: $color-brown;
 }
