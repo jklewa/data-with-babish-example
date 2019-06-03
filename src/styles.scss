@@ -8,14 +8,8 @@ $color-grey: rgb(214,215,217);
 $color-dark-grey: rgb(178,179,181);
 
 
-$color-brand: $color-black;
-$color-accent-1: $color-yellow;
-$color-accent-2: $color-red;
-$color-background: $color-black;
-
-
 body {
-    color: $color-brand;
+    color: $color-black;
     font-family: Arial;
     margin: 0;
 }
