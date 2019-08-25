@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EpisodeService, Episode } from '../episode.service';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -10,18 +11,28 @@ import { EpisodeService, Episode } from '../episode.service';
 })
 export class EpisodeListComponent implements OnInit {
 
-  episodes: Episode[];
+  episodes: any[];
 
-  constructor(private episodeService: EpisodeService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getEpisodes();
   }
 
   getEpisodes(): void {
-    this.episodeService.getEpisodes()
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.episodes.json';
+
+    this.http.get<any[]>(data_url)
+    .pipe(
+      map(response => response.map(ep => {
+        const parts = ep.name.split(/ inspired by | from /);
+        ep.episode_name_pt1 = parts[0];
+        ep.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
+        return ep;
+      }))
+    )
     .subscribe(
-      (episodes: Episode[]) => { this.episodes = episodes; },
+      (episodes: any[]) => { this.episodes = episodes; },
       (error) => { console.error('Failed to fetch episodes', error); });
   }
 

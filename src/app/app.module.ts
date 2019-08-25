@@ -8,6 +8,7 @@ import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 import { HighlightIngredientDirective } from './directives/highlight-ingredient.directive';
+import { FilterIngPipe } from './ingredient-list/ingredient-list.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HighlightIngredientDirective } from './directives/highlight-ingredient.
     EpisodeListComponent,
     IngredientListComponent,
     EpisodeDetailComponent,
-    HighlightIngredientDirective
+    HighlightIngredientDirective,
+    FilterIngPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,26 @@
+<div class="filter-options">
+  <input type="text" class="search" placeholder="Search" (input)="onSearchChange($event.target.value)">
+</div>
+
 <div class="sort-options">
   <span (click)="currentSort = ingredientsByUses" [ngClass]="{'selected': currentSort === ingredientsByUses}">Sorted by Uses</span> |
   <span (click)="currentSort = ingredientsByName" [ngClass]="{'selected': currentSort === ingredientsByName}">Sorted by Name</span>
 </div>
 
-<ul>
-  <li *ngFor="let ing of currentSort">
-    {{ ing }} ({{ groupedIngredients[ing].length }} uses)
+<div class="tiled-list">
 
-    <ul>
-      <li *ngFor="let i of groupedIngredients[ing]">
-        <pre><span appHighlightIngredient [content]="i.raw" [ingredient]="[i.qty,i.unit,i.name,i.raw]"></span> <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
-      </li>
-    </ul>
-  </li>
-</ul>
+  <div class="list-item" *ngFor="let ing of currentSort | filterIng:searchValue">
+
+      <div class="item-name">{{ ing.target }}
+        <span class="muted">({{ groupedIngredients[ing.target].length }} uses)</span>
+      </div>
+
+      <ul>
+        <li *ngFor="let i of groupedIngredients[ing.target]">
+          <pre><span appHighlightIngredient [content]="i.raw" [ingredient]="[i.qty,i.unit,i.name,i.raw]"></span> <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
+        </li>
+      </ul>
+
+  </div>
+
+</div>
