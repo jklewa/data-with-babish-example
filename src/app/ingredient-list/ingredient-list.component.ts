@@ -117,7 +117,9 @@ export class IngredientListComponent implements OnInit {
 @Pipe({ name: 'filterIng' })
 export class FilterIngPipe implements PipeTransform {
   transform(allIng: string[], searchValue: string) {
-    if (!allIng || !searchValue) return allIng;
+    if (!allIng || !searchValue) {
+      return allIng;
+    }
 
     return fuzzysort.go(searchValue, allIng);
   }
