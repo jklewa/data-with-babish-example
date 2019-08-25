@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EpisodeService, Episode } from '../episode.service';
+import { Component, OnInit, SimpleChange, Pipe, PipeTransform } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+import * as fuzzysort from 'fuzzysort';
 
 class Ingredient {
   constructor(
@@ -23,28 +26,49 @@ export class IngredientListComponent implements OnInit {
 
   ingredients: any[];
   groupedIngredients: object;
-  ingredientsByName: string[];
-  ingredientsByUses: string[];
-  currentSort: string[] = null;
+  ingredientsByName: any[];
+  ingredientsByUses: any[];
+  currentSort: any[] = null;
 
-  constructor(private episodeService: EpisodeService) { }
+  searchValueSubject: Subject<string> = new Subject<string>();
+  searchValue: string;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getIngredients();
+    this.searchValueSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(newVal => this.searchValue = newVal);
+  }
+
+  onSearchChange(seachValue: string) {
+    this.searchValueSubject.next(seachValue);
   }
 
   getIngredients(): void {
-    this.episodeService.getEpisodes()
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.episodes.json';
+
+    this.http.get<any[]>(data_url)
+    .pipe(
+      map(response => response.map(ep => {
+        const parts = ep.name.split(/ inspired by | from /);
+        ep.episode_name_pt1 = parts[0];
+        ep.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
+        return ep;
+      }))
+    )
       .subscribe(
-        (episodes: Episode[]) => {
+        (episodes: any[]) => {
           // Pull ingredients out of every episode with meta data about their recipe and episode
           const ingredients: Ingredient[] = [];
 
           episodes.map(ep =>
-            ep.recipes.map((recipe, recipeIdx) =>
-              recipe.ingredients.map(i =>
+            ep.related.recipes.map((recipe, recipeIdx) =>
+              recipe.ingredient_list.map(i =>
                 ingredients.push(
-                  new Ingredient(i[0], i[1], i[2], i[3], ep.id, ep.episode_name, recipeIdx, recipe.method)
+                  new Ingredient(i[0], i[1], i[2], i[3], ep.episode_id, ep.name, recipe.recipe_id, recipe.name)
                 )
               )
             )
@@ -68,14 +92,33 @@ export class IngredientListComponent implements OnInit {
           this.groupedIngredients = groupedIngredients;
 
           // Sorted lists
-          this.ingredientsByName = Object.keys(groupedIngredients).sort(); // sort keys alpha, asc
+          this.ingredientsByName = Object.keys(groupedIngredients).sort((a, b) => {
+            const A = a.toLowerCase().replace(/[^a-z]/g, '');
+            const B = b.toLowerCase().replace(/[^a-z]/g, '');
+            return A.localeCompare(B);
+          })
+          .map(s => fuzzysort.prepare(s)); // sort keys alpha, asc
 
           this.ingredientsByUses = this.ingredientsByName.slice()
-            .sort((a, b) => groupedIngredients[b].length - groupedIngredients[a].length); // sort again by num of uses, desc
+            .sort((a, b) => groupedIngredients[b.target].length - groupedIngredients[a.target].length); // sort again by num of uses, desc
 
           this.currentSort = this.ingredientsByUses;
         },
         (error) => { console.error('Failed to fetch episodes', error); });
   }
 
+  highlight(item: any) {
+    console.log(item);
+    return fuzzysort.highlight(item);
+  }
+
+}
+
+@Pipe({ name: 'filterIng' })
+export class FilterIngPipe implements PipeTransform {
+  transform(allIng: string[], searchValue: string) {
+    if (!allIng || !searchValue) return allIng;
+
+    return fuzzysort.go(searchValue, allIng);
+  }
 }

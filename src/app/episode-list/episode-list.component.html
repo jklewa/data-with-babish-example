@@ -1,5 +1,5 @@
 <div class="episode-list">
-  <div class="episode" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.id">
+  <div class="episode" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.episode_id">
     <div class="episode-name">
         {{ep.episode_name_pt1}}
         <div
@@ -8,17 +8,17 @@
             inspired&nbsp;by {{ep.episode_name_pt2}}
         </div>
     </div>
-    {{ ep.published | date:'fullDate' }} // {{ ep.recipes.length }} recipes
+    {{ ep.published_date | date:'fullDate' }} // {{ ep.related.recipes.length }} recipes
     <ul>
-        <li class="recipe" *ngFor="let r of ep.recipes">
-            <span class="recipe-name">{{ r.method }}</span>
-            <span class="muted"> ({{ r.ingredients.length }} items)</span>
+        <li class="recipe" *ngFor="let r of ep.related.recipes">
+            <span class="recipe-name">{{ r.name }}</span>
+            <span class="muted"> ({{ r.ingredient_list.length }} items)</span>
         </li>
     </ul>
 
     <div class="episode-links">
         <div class="bwb-link">
-            <a [href]="ep.episode_link" target="_blank" (click)="$event.stopPropagation()">
+            <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
                 <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
             </a>
         </div>

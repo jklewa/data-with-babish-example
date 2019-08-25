@@ -20,4 +20,12 @@ a {
     &:hover {
         color: $color-yellow;
     }
+
+    &.external-link svg {
+        fill: $color-red;
+    }
+
+    &.external-link svg:hover svg {
+        fill: $color-yellow;
+    }
 }

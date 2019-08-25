@@ -1,5 +1,10 @@
 @import "../../styles.scss";
 
+.go-back {
+    position: absolute;
+    left: calc(15% / 2 + 5px);
+}
+
 .episode-details {
     font-weight: bold;
     display: block;
@@ -35,15 +40,19 @@
         display: block;
         margin-bottom: 10px;
         text-align: center;
+
+        .sub-name {
+            font-weight: normal;
+        }
     }
 
-    /deep/ .text-highlight-name {
+    ::ng-deep .text-highlight-name {
         color: $color-brown;
     }
-    /deep/ .text-highlight-units {
+    ::ng-deep .text-highlight-units {
         color: $color-yellow;
     }
-    /deep/ .text-highlight-qty {
+    ::ng-deep .text-highlight-qty {
         color: $color-red;
     }
 }

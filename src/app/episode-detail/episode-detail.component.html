@@ -1,3 +1,7 @@
+<div class="go-back">
+    <a routerLink="/episodes">Back to Episodes</a>
+</div>
+
 <div class="episode-details">
     <div class="episode-name">
         {{ep.episode_name_pt1}}
@@ -7,11 +11,11 @@
             inspired&nbsp;by {{ep.episode_name_pt2}}
         </div>
     </div>
-    {{ ep.published | date:'fullDate' }}
+    {{ ep.published_date | date:'fullDate' }}
 
     <div class="episode-links">
         <div class="bwb-link">
-            <a [href]="ep.episode_link" target="_blank" (click)="$event.stopPropagation()">
+            <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
                 <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
             </a>
         </div>
@@ -25,18 +29,48 @@
 </div>
 
 <div class="recipe-list">
-  <div class="recipe" *ngFor="let recipe of ep.recipes">
-    <span class="recipe-name">{{ recipe.method }}</span>
-    <span class="muted"> ({{ recipe.ingredients.length }} items)</span>
-    <ul>
-        <li class="ingredient" *ngFor="let ing of recipe.ingredients">
-            <div appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
-        </li>
-    </ul>
+  <div class="recipe" *ngFor="let guest of ep.related.guests">
+    Guest
+    <span class="recipe-name">{{ guest.name }}</span>
+  </div>
+</div>
+
+<div class="recipe-list">
+  <div class="recipe" *ngFor="let ref of ep.related.inspired_by">
+    Inspired by
+    <span class="recipe-name">
+        {{ ref.name }}
+        <span class="sub-name">({{ ref.type }})</span>
+    </span>
+    <p>
+        {{ ref.description }}
+        <a href="{{ ref.external_link }}" class="external-link">
+            <svg viewBox="0 0 1024 768" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>
+        </a>
+    </p>
+  </div>
+</div>
+
+<div class="recipe-list">
+  <div class="recipe" *ngFor="let recipe of ep.related.recipes">
+    <span class="recipe-name">{{ recipe.name }}</span>
+    <span class="muted"> ({{ recipe.ingredient_list.length }} items)</span>
+    <div style="display: flex;">
+        <ul style="flex: 1">
+            <li class="ingredient" *ngFor="let ing of recipe.ingredient_list">
+                <div appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
+            </li>
+        </ul>
+        <ol style="flex: 2">
+            <li *ngFor="let step of recipe.raw_procedure.split('\n')">
+                {{ step }}
+            </li>
+        </ol>
+    </div>
   </div>
 </div>
 
 <pre>
-Raw data from <a href="https://github.com/jklewa/data-with-babish/#datasets" target="_blank">babish.json</a>:
+Raw data from <a href="https://github.com/jklewa/data-with-babish/#datasets" target="_blank">ibdb.episodes.json</a>:
 {{ ep | json }}
 </pre>
