@@ -1,7 +1,3 @@
-<div class="go-back">
-    <a routerLink="/episodes">Back to Episodes</a>
-</div>
-
 <div class="episode-details">
     <div class="episode-name">
         {{ep.episode_name_pt1}}
@@ -11,7 +7,10 @@
             inspired&nbsp;by {{ep.episode_name_pt2}}
         </div>
     </div>
-    {{ ep.published_date | date:'fullDate' }}
+
+    <p>{{ ep.published_date | date:'fullDate' }}</p>
+
+    <img [src]="ep.image_link">
 
     <div class="episode-links">
         <div class="bwb-link">

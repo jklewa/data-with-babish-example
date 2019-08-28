@@ -9,6 +9,11 @@ import { IngredientListComponent } from './ingredient-list/ingredient-list.compo
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 import { HighlightIngredientDirective } from './directives/highlight-ingredient.directive';
 import { FilterIngPipe } from './ingredient-list/ingredient-list.component';
+import { GuestListComponent } from './guest-list/guest-list.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { ReferenceListComponent } from './reference-list/reference-list.component';
+import { ShowListComponent } from './show-list/show-list.component';
+import { LazyLoadDirective } from './directives/lazy-load.directive';
 
 
 @NgModule({
@@ -19,6 +24,11 @@ import { FilterIngPipe } from './ingredient-list/ingredient-list.component';
     EpisodeDetailComponent,
     HighlightIngredientDirective,
     FilterIngPipe,
+    GuestListComponent,
+    RecipeListComponent,
+    ReferenceListComponent,
+    ShowListComponent,
+    LazyLoadDirective,
   ],
   imports: [
     BrowserModule,

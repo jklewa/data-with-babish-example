@@ -1,0 +1,47 @@
+<div class="tiled-list">
+  <div class="list-item" *ngFor="let recipe of items">
+      <a [name]="'recipe-' + recipe.recipe_id"></a>
+
+      <div class="item-name">{{ recipe.name }}</div>
+      <span class="muted"> ({{ recipe.ingredient_list.length }} items)</span>
+
+      <div style="display: flex;">
+        <ul style="flex: 1">
+            <li class="ingredient" *ngFor="let ing of recipe.ingredient_list">
+                <div appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
+            </li>
+        </ul>
+        <ol style="flex: 2">
+            <li *ngFor="let step of recipe.raw_procedure.split('\n')">
+                {{ step }}
+            </li>
+        </ol>
+    </div>
+
+    <div class="item-links">
+        <div>
+            {{ recipe.source.episode_name_pt1 }}
+        </div>
+
+        <div class="dwb-link">
+            <a [routerLink]="'/episodes/' + recipe.source.episode_id">
+                <img src="assets/data-with-babish-logo.png" alt="Episode details on Data with Babish">
+            </a>
+        </div>
+
+        <div class="bwb-link">
+            <a [href]="recipe.source.official_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
+            </a>
+        </div>
+
+        <div class="yt-link">
+            <a [href]="recipe.source.youtube_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/yt-rgb.png" alt="Watch on YouTube">
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</div>
