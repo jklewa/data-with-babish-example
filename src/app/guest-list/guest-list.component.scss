@@ -1,14 +1,58 @@
 @import "../../styles.scss";
 
-.episode-list {
+.filter-options {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.sort-options {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+
+  span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .selected {
+    font-weight: bold;
+  }
+  .selected:hover {
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+::ng-deep .text-highlight-name {
+    color: $color-brown;
+}
+::ng-deep .text-highlight-units {
+    color: $color-yellow;
+}
+::ng-deep .text-highlight-qty {
+    color: $color-red;
+}
+
+
+
+.tiled-list {
     display: flex;
     flex-wrap: wrap;
     margin: -5px;
     width: 85%;
     margin: 0 auto;
+    justify-content: center;
 }
 
-.episode-name {
+.description {
+    flex-basis: 100%;
+    text-align: center;
+    margin: 5px;
+}
+
+.item-name {
     font-weight: bold;
     display: block;
     margin-bottom: 4px;
@@ -18,8 +62,8 @@
     font-weight: normal;
 }
 
-.episode {
-    flex: 1 1 300px;
+.list-item {
+    flex: 0 300px;
     margin: 5px;
     border: 4px solid $color-red;
     border-radius: 15px;
@@ -43,7 +87,7 @@
 
     .recipe-name { }
 
-    .episode-links {
+    .item-links {
         margin-top: auto;
         display: flex;
         justify-content: center;

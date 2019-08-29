@@ -1,8 +1,16 @@
-<div class="episode-list">
-  <div class="episode" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.episode_id">
-    <a [name]="'ep-' + ep.episode_id"></a>
+<div class="tiled-list" *ngFor="let guest of items">
+  <a [name]="'guest-' + guest.guest_id"></a>
 
-    <div class="episode-name">
+  <div class="description">
+    <span class="item-name" style="font-size: 2rem;">
+        {{ guest.name }}
+    </span>
+    ({{ guest.appearances.length }} appearances)
+  </div>
+
+  <div class="list-item" *ngFor="let ep of guest.appearances" [routerLink]="'/episodes/' + ep.episode_id">
+
+    <div class="item-name">
         {{ep.episode_name_pt1}}
         <div
             *ngIf="ep.episode_name_pt2"
@@ -15,7 +23,7 @@
 
     <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
 
-    <div class="episode-links">
+    <div class="item-links">
         <div class="bwb-link">
             <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
                 <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
@@ -28,5 +36,7 @@
             </a>
         </div>
     </div>
+
   </div>
+
 </div>

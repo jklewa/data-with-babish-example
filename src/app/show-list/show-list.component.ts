@@ -1,40 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-
 @Component({
-  selector: 'app-episode-list',
-  templateUrl: './episode-list.component.html',
-  styleUrls: ['./episode-list.component.scss']
+  selector: 'app-show-list',
+  templateUrl: './show-list.component.html',
+  styleUrls: ['./show-list.component.scss']
 })
-export class EpisodeListComponent implements OnInit {
+export class ShowListComponent implements OnInit {
 
-  episodes: any[];
+  items: any[];
   placeholderImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACpAQMAAACruZLpAAAABlBMVEX///////9VfPVsAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABE0lEQVRYhe2TMU4EMQxFv00kUqxQRDVlRMUpIFBtyRE4Ccp2HIuj7BE4AFqts46oPLMVEsV/GkWT5I3HHmcAQgghhBBCyB9zwu0RH36vwA+eI0vRlyy9XyZ3Q+wtDNdqUvjWPTIENdRqHTEuPPiLY61pmhFeUWwsVzQZkdKaZunMLbVJsvzCErpk05psa3Ctqqe/osnUShqa7la03dRyHtreAi6RlqaWytDerNpQQ3dN69DebeFxq1Jprh2wD7XqGr6G1tBfPrc0j2ZaKP1qnhtWNXizvNJq2mbr/btd1bwLdSzEmp9e72mRNa1ZI2zwEzKuFkgqPS84eH2KlCBhrSfcHPE0n4F82y9ICCGEEELIf+cM7hEjlGmX1eoAAAAASUVORK5CYII=';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getEpisodes();
+    this.getItems();
   }
 
-  getEpisodes(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.episodes.json';
+  getItems(): void {
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.shows.json';
 
     this.http.get<any[]>(data_url)
     .pipe(
-      map(response => response.map(ep => {
-        const parts = ep.name.split(/ inspired by | from /);
-        ep.episode_name_pt1 = parts[0];
-        ep.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
-        return ep;
+      map(response => response.map(i => {
+        i.episodes.map(ep => {
+            const parts = ep.name.split(/ inspired by | from /);
+            ep.episode_name_pt1 = parts[0];
+            ep.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
+            return ep;
+        });
+        return i;
       }))
     )
     .subscribe(
-      (episodes: any[]) => { this.episodes = episodes; },
-      (error) => { console.error('Failed to fetch episodes', error); });
+      (items: any[]) => { this.items = items; },
+      (error) => { console.error('Failed to fetch items', error); });
   }
 
 }

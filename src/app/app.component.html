@@ -1,8 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="header">
-  <img class="logo" src="assets/data-with-babish-logo.png" width="300" height="122" alt="Data With Babish">
+  <div class="clickable" [routerLink]="['/']">
+    <img class="logo" src="assets/data-with-babish-logo.png" width="300" height="122" alt="Data With Babish">
 
-  <h2>Data With Babish</h2>
+    <h2>Data With Babish</h2>
+  </div>
 </div>
 
 <div style="text-align:center">
@@ -11,8 +13,12 @@
     <br/>
     Explore the data of <a href="https://github.com/jklewa/data-with-babish/#datasets">IBDB</a>
     -
-    <a routerLink="/episodes">Episodes</a> |
-    <a routerLink="/ingredients">Ingredients</a>
+    <a routerLink="/shows">Shows</a> |
+    <a routerLink="/references">References</a> |
+    <a routerLink="/guests">Guests</a> |
+    <a routerLink="/recipes">Recipes</a> |
+    <a routerLink="/ingredients">Ingredients</a> |
+    <a routerLink="/episodes">Episodes</a>
   </p>
 </div>
 

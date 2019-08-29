@@ -1,10 +1,5 @@
 @import "../../styles.scss";
 
-.go-back {
-    position: absolute;
-    left: calc(15% / 2 + 5px);
-}
-
 .episode-details {
     font-weight: bold;
     display: block;
@@ -13,6 +8,12 @@
 
     .sub-name {
         font-weight: normal;
+    }
+
+    img {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 600px;
     }
 }
 
