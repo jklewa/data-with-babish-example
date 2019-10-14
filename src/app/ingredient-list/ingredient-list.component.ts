@@ -25,7 +25,7 @@ class Ingredient {
 export class IngredientListComponent implements OnInit {
 
   searchPlaceholder = 'Search - to get started try "Butter"';
-  //filters = {searchTerm: ''};
+  // filters = {searchTerm: ''};
 
   ingredients: any[];
   groupedIngredients: object;

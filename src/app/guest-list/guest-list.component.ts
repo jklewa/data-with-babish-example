@@ -43,8 +43,8 @@ export class GuestListComponent implements OnInit {
   }
 
   guestSearchTerm = guest => [
-          guest.name,
-          ...guest.appearances.map(i => i.name),
-        ].map((t:string) => t.toLowerCase()).join('|');
+    guest.name,
+    ...guest.appearances.map(i => i.name),
+  ].map((t: string) => t.toLowerCase()).join('|')
 
 }

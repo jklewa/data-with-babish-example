@@ -27,21 +27,23 @@
 
   <div class="list-item" *ngFor="let ep of ref.episodes_inspired" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <div class="item-name">
-        <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
-        <div
-            *ngIf="ep.episode_name_pt2"
-            class="sub-name">
-            inspired&nbsp;by
-            <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
-        </div>
-    </div>
-
-    <div class="date">{{ ep.published_date | date:'fullDate' }}</div>
-
     <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
 
-    <div class="item-links">
+    <div class="description">
+        <div class="ep-name">
+            <div class="item-name">
+                <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                <div
+                    *ngIf="ep.episode_name_pt2"
+                    class="sub-name">
+                    inspired&nbsp;by
+                    <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
+                </div>
+            </div>
+
+            <!-- <div class="date">{{ ep.published_date | date:'MMMM d, yyyy' }}</div> -->
+        </div>
+
         <div class="bwb-link">
             <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
                 <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">

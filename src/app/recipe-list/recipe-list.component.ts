@@ -40,9 +40,9 @@ export class RecipeListComponent implements OnInit {
   }
 
   recipeSearchTerm = recipe => [
-          recipe.name,
-          recipe.source.name,
-          ...recipe.ingredient_list.map(([qty, unit, name, raw]) => name),
-        ].map((t:string) => t.toLowerCase()).join('|');
+    recipe.name,
+    recipe.source.name,
+    ...recipe.ingredient_list.map(([qty, unit, name, raw]) => name),
+  ].map((t: string) => t.toLowerCase()).join('|')
 
 }

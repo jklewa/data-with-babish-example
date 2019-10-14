@@ -73,36 +73,42 @@
     flex-direction: column;
     align-content: space-between;
 
+    .description {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     img {
         width: 100%;
         margin: 0 auto;
         max-width: 300px;
+        padding-bottom: 10px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .ep-name {
+        flex-grow: 1;
     }
 
     .date {
         text-align: center;
-        padding-bottom: 10px;
         font-size: 0.8rem;
     }
 
     .recipe-name { }
 
-    .item-links {
-        margin-top: auto;
-        display: flex;
-        justify-content: center;
+    .bwb-link img {
+        width: 33px;
+        height: 33px;
+        padding: 0 3px;
+    }
 
-        .bwb-link img {
-            width: 33px;
-            height: 33px;
-            padding: 7px 7px 0;
-        }
-
-        .yt-link img {
-            width: 80px;
-            height: 18px;
-            padding: 14px 7px 7px;
-        }
+    .yt-link img {
+        width: 80px;
+        height: 18px;
+        padding: 0 3px;
     }
 
     &:hover {

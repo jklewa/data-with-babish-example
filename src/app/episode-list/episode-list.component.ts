@@ -43,12 +43,12 @@ export class EpisodeListComponent implements OnInit {
   }
 
   epSearchTerm = ep => [
-          ep.name,
-          ...ep.related.recipes.map(i => i.name),
-          ...ep.related.guests.map(i => i.name),
-          ...ep.related.inspired_by.map(i => i.name),
-          ep.related.show.name,
-        ].map((t:string) => t.toLowerCase()).join('|');
+    ep.name,
+    ...ep.related.recipes.map(i => i.name),
+    ...ep.related.guests.map(i => i.name),
+    ...ep.related.inspired_by.map(i => i.name),
+    ep.related.show.name,
+  ].map((t: string) => t.toLowerCase()).join('|')
 
   matchedRecipes = ep => this.filters.searchTerm ? this.filter.transform(ep.related.recipes, {name: this.filters.searchTerm}) : [];
   matchedGuests = ep => this.filters.searchTerm ? this.filter.transform(ep.related.guests, {name: this.filters.searchTerm}) : [];
