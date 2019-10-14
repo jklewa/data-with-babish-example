@@ -1,9 +1,13 @@
-<div class="tiled-list" *ngFor="let guest of items">
+<div class="search-container">
+    <input type="search" [placeholder]="searchPlaceholder" [(ngModel)]="filters.searchTerm">
+</div>
+
+<div class="tiled-list" *ngFor="let guest of items | filterBy: filters">
   <a [name]="'guest-' + guest.guest_id"></a>
 
   <div class="description">
     <span class="item-name" style="font-size: 2rem;">
-        {{ guest.name }}
+        <span ngxTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></span>
     </span>
     ({{ guest.appearances.length }} appearances)
   </div>
@@ -11,11 +15,12 @@
   <div class="list-item" *ngFor="let ep of guest.appearances" [routerLink]="'/episodes/' + ep.episode_id">
 
     <div class="item-name">
-        {{ep.episode_name_pt1}}
+        <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
         <div
             *ngIf="ep.episode_name_pt2"
             class="sub-name">
-            inspired&nbsp;by {{ep.episode_name_pt2}}
+            inspired&nbsp;by
+            <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
         </div>
     </div>
 

@@ -1,6 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { NgHighlightModule } from 'ngx-text-highlight';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -12,7 +20,6 @@ import { FilterIngPipe } from './ingredient-list/ingredient-list.component';
 import { GuestListComponent } from './guest-list/guest-list.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { ReferenceListComponent } from './reference-list/reference-list.component';
-import { ShowListComponent } from './show-list/show-list.component';
 import { LazyLoadDirective } from './directives/lazy-load.directive';
 
 
@@ -27,15 +34,22 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
     GuestListComponent,
     RecipeListComponent,
     ReferenceListComponent,
-    ShowListComponent,
     LazyLoadDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FilterPipeModule,
+    FormsModule,
+    NgHighlightModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far, fab);
+  }
+}
