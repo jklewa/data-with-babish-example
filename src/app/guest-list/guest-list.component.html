@@ -1,29 +1,36 @@
-<div class="tiled-list" *ngFor="let guest of items">
+<div class="search-container">
+    <input type="search" [placeholder]="searchPlaceholder" [(ngModel)]="filters.searchTerm">
+</div>
+
+<div class="tiled-list" *ngFor="let guest of items | filterBy: filters">
   <a [name]="'guest-' + guest.guest_id"></a>
 
   <div class="description">
     <span class="item-name" style="font-size: 2rem;">
-        {{ guest.name }}
+        <span ngxTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></span>
     </span>
     ({{ guest.appearances.length }} appearances)
   </div>
 
   <div class="list-item" *ngFor="let ep of guest.appearances" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <div class="item-name">
-        {{ep.episode_name_pt1}}
-        <div
-            *ngIf="ep.episode_name_pt2"
-            class="sub-name">
-            inspired&nbsp;by {{ep.episode_name_pt2}}
-        </div>
-    </div>
-
-    <div class="date">{{ ep.published_date | date:'fullDate' }}</div>
-
     <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
 
-    <div class="item-links">
+    <div class="description">
+        <div class="ep-name">
+            <div class="item-name">
+                <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                <div
+                    *ngIf="ep.episode_name_pt2"
+                    class="sub-name">
+                    inspired&nbsp;by
+                    <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
+                </div>
+            </div>
+
+            <!-- <div class="date">{{ ep.published_date | date:'MMMM d, yyyy' }}</div> -->
+        </div>
+
         <div class="bwb-link">
             <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
                 <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">

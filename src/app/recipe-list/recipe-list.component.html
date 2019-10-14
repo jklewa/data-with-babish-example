@@ -1,14 +1,22 @@
+<div class="search-container">
+    <input type="search" [placeholder]="searchPlaceholder" [(ngModel)]="filters.searchTerm">
+</div>
+
 <div class="tiled-list">
-  <div class="list-item" *ngFor="let recipe of items">
+  <div class="list-item" *ngFor="let recipe of items | filterBy: filters">
       <a [name]="'recipe-' + recipe.recipe_id"></a>
 
-      <div class="item-name">{{ recipe.name }}</div>
+      <div class="item-name">
+          <span ngxTextHighlight [content]="recipe.name" [searchTerm]="filters.searchTerm"></span>
+      </div>
       <span class="muted"> ({{ recipe.ingredient_list.length }} items)</span>
 
       <div style="display: flex;">
         <ul style="flex: 1">
             <li class="ingredient" *ngFor="let ing of recipe.ingredient_list">
-                <div appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
+                <div
+                 ngxTextHighlight [searchTerm]="filters.searchTerm"
+                 appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
             </li>
         </ul>
         <ol style="flex: 2">

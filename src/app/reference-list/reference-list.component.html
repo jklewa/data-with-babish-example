@@ -1,9 +1,20 @@
-<div class="tiled-list" *ngFor="let ref of items">
+<div class="search-container">
+    <input type="search" [placeholder]="searchPlaceholder" [(ngModel)]="filters.searchTerm">
+</div>
+
+<div class="tiled-list" *ngFor="let ref of items | filterBy: filters">
   <a [name]="'ref-' + ref.reference_id"></a>
   <div class="description">
     <span class="item-name" style="font-size: 2rem;">
-        {{ ref.name }}
-        <span class="sub-name">({{ ref.type }})</span>
+        <span ngxTextHighlight [content]="ref.name" [searchTerm]="filters.searchTerm"></span>
+        <span class="sub-name">
+            <fa-icon title="TV Show" *ngIf="ref.type == 'tv_show'" [icon]="['fas', 'tv']"></fa-icon>
+            <fa-icon title="Video Game" *ngIf="ref.type == 'video_game'" [icon]="['fas', 'gamepad']"></fa-icon>
+            <fa-icon title="Movie" *ngIf="ref.type == 'movie'" [icon]="['fas', 'film']"></fa-icon>
+            <fa-icon title="Comedy Special" *ngIf="ref.type == 'comedy_special'" [icon]="['far', 'laugh-beam']"></fa-icon>
+            <fa-icon title="Youtube Channel" *ngIf="ref.type == 'youtube_channel'" [icon]="['fab', 'youtube']" [styles]="{'color': '#FF0000'}"></fa-icon>
+            <fa-icon title="Other Reference" *ngIf="ref.type == 'other'" [icon]="['fas', 'link']"></fa-icon>
+        </span>
     </span>
     <p>
         {{ ref.description }}
@@ -16,20 +27,23 @@
 
   <div class="list-item" *ngFor="let ep of ref.episodes_inspired" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <div class="item-name">
-        {{ep.episode_name_pt1}}
-        <div
-            *ngIf="ep.episode_name_pt2"
-            class="sub-name">
-            inspired&nbsp;by {{ep.episode_name_pt2}}
-        </div>
-    </div>
-
-    <div class="date">{{ ep.published_date | date:'fullDate' }}</div>
-
     <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
 
-    <div class="item-links">
+    <div class="description">
+        <div class="ep-name">
+            <div class="item-name">
+                <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                <div
+                    *ngIf="ep.episode_name_pt2"
+                    class="sub-name">
+                    inspired&nbsp;by
+                    <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
+                </div>
+            </div>
+
+            <!-- <div class="date">{{ ep.published_date | date:'MMMM d, yyyy' }}</div> -->
+        </div>
+
         <div class="bwb-link">
             <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
                 <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">

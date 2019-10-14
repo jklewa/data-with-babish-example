@@ -1,5 +1,5 @@
-<div class="filter-options">
-  <input type="text" class="search" placeholder="Search" (input)="onSearchChange($event.target.value)">
+<div class="search-container">
+    <input type="search" [placeholder]="searchPlaceholder" (input)="onSearchChange($event.target.value)">
 </div>
 
 <div class="sort-options">
@@ -17,7 +17,7 @@
 
       <ul>
         <li *ngFor="let i of groupedIngredients[ing.target]">
-          <pre><span appHighlightIngredient [content]="i.raw" [ingredient]="[i.qty,i.unit,i.name,i.raw]"></span> <b>for</b> <i>{{ i.recipeName }}</i> <b>from</b> <i>{{ i.episodeName }}</i></pre>
+          <pre><span appHighlightIngredient [content]="i.raw" [ingredient]="[i.qty,i.unit,i.name,i.raw]"></span> <b>in</b> <i>{{ i.recipeName }}</i> <b>from</b> <a [routerLink]="['/episodes', i.episodeId]"><i>{{ i.episodeName }}</i></a></pre>
         </li>
       </ul>
 
