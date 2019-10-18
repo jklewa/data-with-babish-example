@@ -16,7 +16,6 @@ import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 import { HighlightIngredientDirective } from './directives/highlight-ingredient.directive';
-import { FilterIngPipe } from './ingredient-list/ingredient-list.component';
 import { GuestListComponent } from './guest-list/guest-list.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { ReferenceListComponent } from './reference-list/reference-list.component';
@@ -30,7 +29,6 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
     IngredientListComponent,
     EpisodeDetailComponent,
     HighlightIngredientDirective,
-    FilterIngPipe,
     GuestListComponent,
     RecipeListComponent,
     ReferenceListComponent,

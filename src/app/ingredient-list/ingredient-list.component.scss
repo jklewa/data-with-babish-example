@@ -38,19 +38,17 @@
 
 
 .tiled-list {
-    display: flex;
-    flex-wrap: wrap;
     margin: -5px;
     width: 85%;
     margin: 0 auto;
+    -webkit-columns: 15em;
+    -moz-columns: 15em;
+    columns: 15em;
 }
 
 .list-item {
-    flex: 1 1 300px;
-    margin: 5px;
-    border: 4px solid $color-red;
-    border-radius: 15px;
-    padding: 7px 10px;
+    flex: 1 1 auto;
+    padding: 5px 10px;
 
     display: flex;
     flex-direction: column;
@@ -60,7 +58,7 @@
         font-weight: bold;
         display: block;
         margin-bottom: 10px;
-        text-align: center;
+        text-align: left;
     }
     .sub-name {
         font-weight: normal;

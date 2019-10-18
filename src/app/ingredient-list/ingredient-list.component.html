@@ -9,17 +9,11 @@
 
 <div class="tiled-list">
 
-  <div class="list-item" *ngFor="let ing of currentSort | filterIng:searchValue">
+  <div class="list-item" *ngFor="let ing of currentSort | filterBy:searchValue">
 
-      <div class="item-name">{{ ing.target }}
-        <span class="muted">({{ groupedIngredients[ing.target].length }} uses)</span>
+      <div class="item-name">{{ ing }}
+        <span class="muted">({{ groupedIngredients[ing].length }} uses)</span>
       </div>
-
-      <ul>
-        <li *ngFor="let i of groupedIngredients[ing.target]">
-          <pre><span appHighlightIngredient [content]="i.raw" [ingredient]="[i.qty,i.unit,i.name,i.raw]"></span> <b>in</b> <i>{{ i.recipeName }}</i> <b>from</b> <a [routerLink]="['/episodes', i.episodeId]"><i>{{ i.episodeName }}</i></a></pre>
-        </li>
-      </ul>
 
   </div>
 

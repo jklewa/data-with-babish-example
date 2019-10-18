@@ -3,8 +3,6 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import * as fuzzysort from 'fuzzysort';
-
 class Ingredient {
   constructor(
     public qty: string,
@@ -100,30 +98,13 @@ export class IngredientListComponent implements OnInit {
             const B = b.toLowerCase().replace(/[^a-z]/g, '');
             return A.localeCompare(B);
           })
-          .map(s => fuzzysort.prepare(s)); // sort keys alpha, asc
 
           this.ingredientsByUses = this.ingredientsByName.slice()
-            .sort((a, b) => groupedIngredients[b.target].length - groupedIngredients[a.target].length); // sort again by num of uses, desc
+            .sort((a, b) => groupedIngredients[b].length - groupedIngredients[a].length); // sort again by num of uses, desc
 
           this.currentSort = this.ingredientsByUses;
         },
         (error) => { console.error('Failed to fetch episodes', error); });
   }
 
-  highlight(item: any) {
-    console.log(item);
-    return fuzzysort.highlight(item);
-  }
-
-}
-
-@Pipe({ name: 'filterIng' })
-export class FilterIngPipe implements PipeTransform {
-  transform(allIng: string[], searchValue: string) {
-    if (!allIng || !searchValue) {
-      return allIng;
-    }
-
-    return fuzzysort.go(searchValue, allIng);
-  }
 }

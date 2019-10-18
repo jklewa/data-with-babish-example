@@ -46,7 +46,7 @@ export class ReferenceListComponent implements OnInit {
   refSearchTerm = ref => [
     ref.name,
     ...ref.episodes_inspired.map(i => i.name),
-    ref.type,
+    ref.type.replace('_', ' '),
   ].map((t: string) => t.toLowerCase()).join('|')
 
 }
