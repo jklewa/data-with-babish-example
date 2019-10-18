@@ -97,7 +97,7 @@ export class IngredientListComponent implements OnInit {
             const A = a.toLowerCase().replace(/[^a-z]/g, '');
             const B = b.toLowerCase().replace(/[^a-z]/g, '');
             return A.localeCompare(B);
-          })
+          });
 
           this.ingredientsByUses = this.ingredientsByName.slice()
             .sort((a, b) => groupedIngredients[b].length - groupedIngredients[a].length); // sort again by num of uses, desc
