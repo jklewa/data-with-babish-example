@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
@@ -25,6 +26,7 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
 @NgModule({
   declarations: [
     AppComponent,
+    OverviewPageComponent,
     EpisodeListComponent,
     IngredientListComponent,
     EpisodeDetailComponent,
