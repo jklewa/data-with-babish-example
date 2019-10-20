@@ -1,9 +1,9 @@
 <h2>Recent Episodes</h2>
 
-<div class="tiled-list">
-  <div class="list-item" *ngFor="let ep of episodes.slice(0, 4)" [routerLink]="'/episodes/' + ep.episode_id">
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
+  <div ngxSlickItem class="slide list-item" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
+    <img [src]="ep.image_link">
 
     <div class="description">
         <div class="ep-name">
@@ -35,15 +35,15 @@
 
   </div>
 
-</div>
+</ngx-slick-carousel>
 
 <h2>Most Common References</h2>
 
-<div class="tiled-list">
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
 
-  <div class="list-item" *ngFor="let ref of references.slice(0, 4)" [routerLink]="'/references'">
+  <div ngxSlickItem class="slide list-item" *ngFor="let ref of references" [routerLink]="'/references'">
 
-    <img appLazyLoad [src]="placeholderImg">
+    <img [src]="placeholderImg">
 
 
     <div class="description">
@@ -74,15 +74,15 @@
 
   </div>
 
-</div>
+</ngx-slick-carousel>
 
 <h2>Returning Guests</h2>
 
-<div class="tiled-list">
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
 
-  <div class="list-item" *ngFor="let guest of guests.slice(0, 4)" [routerLink]="'/guests'">
+  <div ngxSlickItem class="slide list-item" *ngFor="let guest of guests" [routerLink]="'/guests'">
 
-    <img appLazyLoad [src]="placeholderImg">
+    <img [src]="placeholderImg">
 
     <div class="description">
       <div class="ep-name">
@@ -97,7 +97,7 @@
 
   </div>
 
-</div>
+</ngx-slick-carousel>
 
 <h2>Start Cooking!</h2>
 

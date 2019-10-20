@@ -12,6 +12,17 @@ export class OverviewPageComponent implements OnInit {
 
   searchPlaceholder = 'Search - to get started try "Chicken"';
   filters = {searchTerm: ''};
+  slideConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 2000,
+    arrows: true,
+    cssEase: 'ease-in-out',
+    nextArrow: '<div class="nav-btn next-slide"></div>',
+    prevArrow: '<div class="nav-btn prev-slide"></div>',
+  };
 
   episodes: any[];
   references: any[];
@@ -115,4 +126,11 @@ export class OverviewPageComponent implements OnInit {
     guest.name,
     ...guest.appearances.map(i => i.name),
   ].map((t: string) => t.toLowerCase()).join('|')
+
+  chunk(input: any[], size: number): any[] {
+    return Array(Math.ceil(input.length / size))
+      .fill([])
+      .map((_, index) => index * size)
+      .map(begin => input.slice(begin, begin + size));
+  }
 }

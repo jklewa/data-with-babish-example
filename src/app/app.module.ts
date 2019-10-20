@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgHighlightModule } from 'ngx-text-highlight';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -44,6 +45,7 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
     FormsModule,
     NgHighlightModule,
     FontAwesomeModule,
+    SlickCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -39,12 +39,45 @@ h1, h2, h3, h4 {
     color: $color-red;
 }
 
+.tiled-carousel {
+    width: 85%;
+    margin: 0 auto;
+}
 
+::ng-deep .nav-btn {
+    height: 47px;
+    position: absolute;
+    width: 26px;
+    cursor: pointer;
+    top: 100px !important;
+
+    &.prev-slide.slick-disabled,
+    &.next-slide.slick-disabled {
+        pointer-events: none;
+        opacity: 0.2;
+    }
+
+    &.prev-slide {
+        background: url(../../assets/nav-icon.png) no-repeat scroll 0 0;
+        left: -33px;
+
+        &:hover {
+            background-position: 0px -53px;
+        }
+    }
+    &.next-slide {
+        background: url(../../assets/nav-icon.png) no-repeat scroll -24px 0px;
+        right: -33px;
+
+        &:hover {
+            background-position: -24px -53px;
+        }
+    }
+}
 
 .tiled-list {
     display: flex;
     flex-wrap: wrap;
-    margin: -5px;
     width: 85%;
     margin: 0 auto;
     justify-content: center;
@@ -67,7 +100,7 @@ h1, h2, h3, h4 {
 }
 
 .list-item {
-    flex: 0 300px;
+    width: 300px;
     margin: 5px;
     border: 4px solid $color-red;
     border-radius: 15px;
