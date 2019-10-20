@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgHighlightModule } from 'ngx-text-highlight';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -12,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
@@ -25,6 +27,7 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
 @NgModule({
   declarations: [
     AppComponent,
+    OverviewPageComponent,
     EpisodeListComponent,
     IngredientListComponent,
     EpisodeDetailComponent,
@@ -42,6 +45,7 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
     FormsModule,
     NgHighlightModule,
     FontAwesomeModule,
+    SlickCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

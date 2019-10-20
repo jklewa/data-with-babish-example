@@ -1,0 +1,104 @@
+<h2>Recent Episodes</h2>
+
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
+  <div ngxSlickItem class="slide list-item" *ngFor="let ep of episodes" [routerLink]="'/episodes/' + ep.episode_id">
+
+    <img [src]="ep.image_link">
+
+    <div class="description">
+        <div class="ep-name">
+            <div class="item-name">
+                <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                <div
+                    *ngIf="ep.episode_name_pt2"
+                    class="sub-name">
+                    inspired&nbsp;by
+                    <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
+                </div>
+            </div>
+
+            <!-- <div class="date">{{ ep.published_date | date:'MMMM d, yyyy' }}</div> -->
+        </div>
+
+        <div class="bwb-link">
+            <a [href]="ep.official_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
+            </a>
+        </div>
+
+        <div class="yt-link">
+            <a [href]="ep.youtube_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/yt-rgb.png" alt="Watch on YouTube">
+            </a>
+        </div>
+    </div>
+
+  </div>
+
+</ngx-slick-carousel>
+
+<h2>Most Common References</h2>
+
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
+
+  <div ngxSlickItem class="slide list-item" *ngFor="let ref of references" [routerLink]="'/references'">
+
+    <img [src]="placeholderImg">
+
+
+    <div class="description">
+      <div class="ep-name">
+        <div class="item-name">
+          <span ngxTextHighlight [content]="ref.name" [searchTerm]="filters.searchTerm"></span>
+          <div class="sub-name">
+              inspired {{ ref.episodes_inspired.length }} episodes
+          </div>
+        </div>
+      </div>
+
+      <div class="ref-type-icon">
+        <fa-icon title="TV Show" *ngIf="ref.type == 'tv_show'" [icon]="['fas', 'tv']"></fa-icon>
+        <fa-icon title="Video Game" *ngIf="ref.type == 'video_game'" [icon]="['fas', 'gamepad']"></fa-icon>
+        <fa-icon title="Movie" *ngIf="ref.type == 'movie'" [icon]="['fas', 'film']"></fa-icon>
+        <fa-icon title="Comedy Special" *ngIf="ref.type == 'comedy_special'" [icon]="['far', 'laugh-beam']"></fa-icon>
+        <fa-icon title="Youtube Channel" *ngIf="ref.type == 'youtube_channel'" [icon]="['fab', 'youtube']" [styles]="{'color': '#FF0000'}"></fa-icon>
+        <fa-icon title="Other Reference" *ngIf="ref.type == 'other'" [icon]="['fas', 'link']"></fa-icon>
+      </div>
+
+      <div>
+          <a href="{{ ref.external_link }}" class="external-link">
+              <svg viewBox="0 0 1024 768" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M640 768H128V257.90599999999995L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z"/></svg>
+          </a>
+      </div>
+    </div>
+
+  </div>
+
+</ngx-slick-carousel>
+
+<h2>Returning Guests</h2>
+
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
+
+  <div ngxSlickItem class="slide list-item" *ngFor="let guest of guests" [routerLink]="'/guests'">
+
+    <img [src]="placeholderImg">
+
+    <div class="description">
+      <div class="ep-name">
+        <div class="item-name">
+          <span ngxTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></span>
+          <div class="sub-name">
+              appears in {{ guest.appearances.length }} episodes
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ngx-slick-carousel>
+
+<h2>Start Cooking!</h2>
+
+<h3>... load recipes here</h3>
