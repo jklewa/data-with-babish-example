@@ -16,6 +16,9 @@
             <fa-icon title="Other Reference" *ngIf="ref.type == 'other'" [icon]="['fas', 'link']"></fa-icon>
         </span>
     </span>
+
+    <img appLazyLoad [src]="ref.image_link" [lazySrc]="placeholderImg">
+
     <p>
         {{ ref.description }}
         <a href="{{ ref.external_link }}" class="external-link">
