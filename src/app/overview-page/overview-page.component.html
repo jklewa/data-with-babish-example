@@ -101,4 +101,38 @@
 
 <h2>Start Cooking!</h2>
 
-<h3>... load recipes here</h3>
+<ngx-slick-carousel class="carousel tiled-carousel" [config]="slideConfig">
+
+  <div ngxSlickItem class="slide list-item" *ngFor="let recipe of recipes.slice(100)" [routerLink]="'/episodes/' + recipe.source.episode_id">
+
+    <img [src]="recipe.source.image_link">
+
+    <div class="description">
+        <div class="ep-name">
+            <div class="item-name">
+                <span ngxTextHighlight [content]="recipe.name" [searchTerm]="filters.searchTerm"></span>
+                <div
+                    class="sub-name">
+                    <span ngxTextHighlight [content]="recipe.source.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                </div>
+            </div>
+
+            <!-- <div class="date">{{ ep.published_date | date:'MMMM d, yyyy' }}</div> -->
+        </div>
+
+        <div class="bwb-link">
+            <a [href]="recipe.source.official_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/bwb-logo.png" alt="Full details on Binging with Babish">
+            </a>
+        </div>
+
+        <div class="yt-link">
+            <a [href]="recipe.source.youtube_link" target="_blank" (click)="$event.stopPropagation()">
+                <img src="assets/yt-rgb.png" alt="Watch on YouTube">
+            </a>
+        </div>
+    </div>
+
+  </div>
+
+</ngx-slick-carousel>

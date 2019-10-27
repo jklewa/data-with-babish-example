@@ -12,6 +12,7 @@ body {
     color: $color-black;
     font-family: Arial;
     margin: 0;
+    overscroll-behavior: none;
 }
 
 a {

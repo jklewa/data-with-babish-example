@@ -16,7 +16,7 @@ export class OverviewPageComponent implements OnInit {
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 10000,
     speed: 2000,
     arrows: true,
     cssEase: 'ease-in-out',
@@ -24,9 +24,10 @@ export class OverviewPageComponent implements OnInit {
     prevArrow: '<div class="nav-btn prev-slide"></div>',
   };
 
-  episodes: any[];
-  references: any[];
-  guests: any[];
+  episodes = [];
+  references = [];
+  guests =[];
+  recipes = [];
   placeholderImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACpAQMAAACruZLpAAAABlBMVEX///////9VfPVsAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABE0lEQVRYhe2TMU4EMQxFv00kUqxQRDVlRMUpIFBtyRE4Ccp2HIuj7BE4AFqts46oPLMVEsV/GkWT5I3HHmcAQgghhBBCyB9zwu0RH36vwA+eI0vRlyy9XyZ3Q+wtDNdqUvjWPTIENdRqHTEuPPiLY61pmhFeUWwsVzQZkdKaZunMLbVJsvzCErpk05psa3Ctqqe/osnUShqa7la03dRyHtreAi6RlqaWytDerNpQQ3dN69DebeFxq1Jprh2wD7XqGr6G1tBfPrc0j2ZaKP1qnhtWNXizvNJq2mbr/btd1bwLdSzEmp9e72mRNa1ZI2zwEzKuFkgqPS84eH2KlCBhrSfcHPE0n4F82y9ICCGEEELIf+cM7hEjlGmX1eoAAAAASUVORK5CYII=';
 
   constructor(private http: HttpClient, private filter: FilterPipe) { }
@@ -35,6 +36,7 @@ export class OverviewPageComponent implements OnInit {
     this.getEpisodes();
     this.getReferences();
     this.getGuests();
+    this.getRecipes();
   }
 
   getEpisodes(): void {
@@ -125,6 +127,36 @@ export class OverviewPageComponent implements OnInit {
   guestSearchTerm = guest => [
     guest.name,
     ...guest.appearances.map(i => i.name),
+  ].map((t: string) => t.toLowerCase()).join('|')
+
+
+
+
+  getRecipes(): void {
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.recipes.json';
+
+    this.http.get<any[]>(data_url)
+    .pipe(
+      map(response => response.map(i => {
+        const parts = i.source.name.split(/ inspired by | from /);
+        i.source.episode_name_pt1 = parts[0];
+        i.source.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
+        i.searchTerm = this.recipeSearchTerm(i);
+        return i;
+      }).sort((a, b) => {
+        return Math.random() - 0.5;
+        //return b.appearances.length - a.appearances.length;
+      })),
+    )
+    .subscribe(
+      (items: any[]) => { this.recipes = items; },
+      (error) => { console.error('Failed to fetch recipes', error); });
+  }
+
+  recipeSearchTerm = recipe => [
+    recipe.name,
+    recipe.source.name,
+    ...recipe.ingredient_list.map(([qty, unit, name, raw]) => name),
   ].map((t: string) => t.toLowerCase()).join('|')
 
   chunk(input: any[], size: number): any[] {
