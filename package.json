@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc --tsconfig tsconfig.json"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +31,6 @@
     "jquery": "^3.5.1",
     "ngx-filter-pipe": "^2.1.2",
     "ngx-slick-carousel": "^0.4.7",
-    "ngx-text-highlighter": "0.0.4",
     "rxjs": "^6.6.2",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.0.0",

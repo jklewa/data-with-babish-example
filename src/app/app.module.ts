@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import { NgxTextHighlighterModule } from 'ngx-text-highlighter';
+import { HighlightDirective } from './directives/text-highlight.directive';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +27,7 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
 @NgModule({
   declarations: [
     AppComponent,
+    HighlightDirective,
     OverviewPageComponent,
     EpisodeListComponent,
     IngredientListComponent,
@@ -43,7 +44,6 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
     HttpClientModule,
     FilterPipeModule,
     FormsModule,
-    NgxTextHighlighterModule,
     FontAwesomeModule,
     SlickCarouselModule,
   ],

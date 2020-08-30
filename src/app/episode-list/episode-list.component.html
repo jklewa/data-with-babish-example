@@ -10,12 +10,12 @@
     <div class="description">
         <div class="ep-name">
             <div class="item-name">
-                <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                <span appTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
                 <div
                     *ngIf="ep.episode_name_pt2"
                     class="sub-name">
                     inspired&nbsp;by
-                    <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
+                    <span appTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
                 </div>
             </div>
 
@@ -38,15 +38,15 @@
     <div class="matchers">
         <ul>
             <li *ngFor="let recipe of matchedRecipes(ep)">
-                <div ngxTextHighlight [content]="recipe.name" [searchTerm]="filters.searchTerm"></div>
+                <div appTextHighlight [content]="recipe.name" [searchTerm]="filters.searchTerm"></div>
             </li>
 
             <li *ngFor="let guest of matchedGuests(ep)">
-                <div ngxTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></div>
+                <div appTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></div>
             </li>
 
             <li *ngFor="let ref of matchedInspiredBy(ep)">
-                <div ngxTextHighlight [content]="ref.name" [searchTerm]="filters.searchTerm"></div>
+                <div appTextHighlight [content]="ref.name" [searchTerm]="filters.searchTerm"></div>
             </li>
         </ul>
     </div>
