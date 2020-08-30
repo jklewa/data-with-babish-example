@@ -7,7 +7,7 @@
 
   <div class="description">
     <span class="item-name" style="font-size: 2rem;">
-        <span ngxTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></span>
+        <span appTextHighlight [content]="guest.name" [searchTerm]="filters.searchTerm"></span>
     </span>
     ({{ guest.appearances.length }} appearances)
   </div>
@@ -19,12 +19,12 @@
     <div class="description">
         <div class="ep-name">
             <div class="item-name">
-                <span ngxTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
+                <span appTextHighlight [content]="ep.episode_name_pt1" [searchTerm]="filters.searchTerm"></span>
                 <div
                     *ngIf="ep.episode_name_pt2"
                     class="sub-name">
                     inspired&nbsp;by
-                    <span ngxTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
+                    <span appTextHighlight [content]="ep.episode_name_pt2" [searchTerm]="filters.searchTerm"></span>
                 </div>
             </div>
 

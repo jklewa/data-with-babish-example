@@ -7,7 +7,7 @@
       <a [name]="'recipe-' + recipe.recipe_id"></a>
 
       <div class="item-name">
-          <span ngxTextHighlight [content]="recipe.name" [searchTerm]="filters.searchTerm"></span>
+          <span appTextHighlight [content]="recipe.name" [searchTerm]="filters.searchTerm"></span>
       </div>
       <span class="muted"> ({{ recipe.ingredient_list.length }} items)</span>
 
@@ -15,7 +15,7 @@
         <ul style="flex: 1">
             <li class="ingredient" *ngFor="let ing of recipe.ingredient_list">
                 <div
-                 ngxTextHighlight [searchTerm]="filters.searchTerm"
+                 appTextHighlight [searchTerm]="filters.searchTerm"
                  appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
             </li>
         </ul>
