@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - "10"
+  - "13"
 dist: trusty
-sudo: false
+os: linux
 
 branches:
   only:
@@ -19,9 +19,10 @@ script:
   - ng lint
   - ng build --prod --base-href https://jklewa.github.io/data-with-babish-example/
 deploy:
+  strategy: git
   provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  cleanup: false
+  token: $GITHUB_TOKEN
   local_dir: dist
   on:
     branch: master
