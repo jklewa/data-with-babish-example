@@ -4,7 +4,7 @@ An interactive Binging with Babish episode data viewer, using the data from [dat
 
 Viewable at https://jklewa.github.io/data-with-babish-example/
 
-[![Build Status](https://travis-ci.org/jklewa/data-with-babish-example.svg?branch=master)](https://travis-ci.org/jklewa/data-with-babish-example)
+[![Build Status](https://travis-ci.com/jklewa/data-with-babish-example.svg?branch=master)](https://travis-ci.com/jklewa/data-with-babish-example)
 
 ## Development server
 
