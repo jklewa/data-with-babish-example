@@ -24,7 +24,7 @@ export class EpisodeDetailComponent implements OnInit {
   ngOnInit() {
    this.id = this.route.snapshot.paramMap.get('id');
 
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.episodes.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.episodes.json';
 
     this.http.get<any[]>(data_url)
     .pipe(

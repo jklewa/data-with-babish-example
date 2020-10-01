@@ -22,7 +22,7 @@ export class RecipeListComponent implements OnInit {
   }
 
   getItems(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.recipes.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.recipes.json';
 
     this.http.get<any[]>(data_url)
     .pipe(

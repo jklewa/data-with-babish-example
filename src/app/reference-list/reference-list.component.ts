@@ -23,7 +23,7 @@ export class ReferenceListComponent implements OnInit {
   }
 
   getItems(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.references.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.references.json';
 
     this.http.get<any[]>(data_url)
     .pipe(

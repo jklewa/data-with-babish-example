@@ -40,7 +40,7 @@ export class OverviewPageComponent implements OnInit {
   }
 
   getEpisodes(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.episodes.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.episodes.json';
 
     this.http.get<any[]>(data_url)
     .pipe(
@@ -70,7 +70,7 @@ export class OverviewPageComponent implements OnInit {
 
 
   getReferences(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.references.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.references.json';
 
     this.http.get<any[]>(data_url)
     .pipe(
@@ -102,7 +102,7 @@ export class OverviewPageComponent implements OnInit {
 
 
   getGuests(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.guests.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.guests.json';
 
     this.http.get<any[]>(data_url)
     .pipe(
@@ -133,7 +133,7 @@ export class OverviewPageComponent implements OnInit {
 
 
   getRecipes(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.recipes.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.recipes.json';
 
     this.http.get<any[]>(data_url)
     .pipe(

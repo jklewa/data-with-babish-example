@@ -22,7 +22,7 @@ export class GuestListComponent implements OnInit {
   }
 
   getItems(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/ibdb.guests.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.guests.json';
 
     this.http.get<any[]>(data_url)
     .pipe(
