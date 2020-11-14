@@ -49,7 +49,7 @@ export class IngredientListComponent implements OnInit {
   }
 
   getIngredients(): void {
-    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/datasets/ibdb.episodes.json';
+    const data_url = 'https://raw.githubusercontent.com/jklewa/data-with-babish/master/datasets/ibdb.episodes.json';
 
     this.http.get<any[]>(data_url)
     .pipe(
