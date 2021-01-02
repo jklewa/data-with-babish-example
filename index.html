@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Data With Babish</title>
+  <base href="https://jklewa.github.io/data-with-babish-example/">  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Start Single Page Apps for GitHub Pages -->
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // https://github.com/rafrex/spa-github-pages
+    // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
+    // ----------------------------------------------------------------------
+    // This script checks to see if a redirect is present in the query string
+    // and converts it back into the correct url and adds it to the
+    // browser's history using window.history.replaceState(...),
+    // which won't cause the browser to attempt to load the new url.
+    // When the single page app is loaded further down in this file,
+    // the correct url will be waiting in the browser's history for
+    // the single page app to route accordingly.
+    (function (l) {
+      if (l.search) {
+        var q = {};
+        l.search.slice(1).split('&').forEach(function (v) {
+          var a = v.split('=');
+          q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+        });
+        if (q.p !== undefined) {
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + (q.p || '') +
+            (q.q ? ('?' + q.q) : '') +
+            l.hash);
+        }
+      }
+    }(window.location));
+  </script>
+<link rel="stylesheet" href="styles.a166a2b55d33e4ab5f30.css"></head>
+<body>
+  <app-root></app-root>
+<script src="runtime.e227d1a0e31cbccbf8ec.js" defer></script><script src="polyfills-es5.36647ae4fe568fac59da.js" nomodule defer></script><script src="polyfills.a39eb059491c4cfb8342.js" defer></script><script src="scripts.c5648532e9a6a23906a1.js" defer></script><script src="main.15aae4946b32b8b4c156.js" defer></script></body>
+</html>
