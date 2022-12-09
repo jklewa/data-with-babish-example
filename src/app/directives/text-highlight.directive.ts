@@ -24,13 +24,13 @@ export class HighlightDirective  {
   spanStart = '<span class="text-highlight">';
   spanEnd = '</span>';
 
-  @Input('content')
+  @Input()
   set content(content: string) {
     this._content = content;
   }
   get content(): string { return this._content; }
 
-  @Input('searchTerm')
+  @Input()
   set searchTerm(searchTerm: string) {
     this._searchTerm = searchTerm;
     this.highlight();

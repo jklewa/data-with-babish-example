@@ -57,12 +57,12 @@
       </div>
 
       <div class="ref-type-icon">
-        <fa-icon title="TV Show" *ngIf="ref.type == 'tv_show'" [icon]="['fas', 'tv']"></fa-icon>
-        <fa-icon title="Video Game" *ngIf="ref.type == 'video_game'" [icon]="['fas', 'gamepad']"></fa-icon>
-        <fa-icon title="Movie" *ngIf="ref.type == 'movie'" [icon]="['fas', 'film']"></fa-icon>
-        <fa-icon title="Comedy Special" *ngIf="ref.type == 'comedy_special'" [icon]="['far', 'laugh-beam']"></fa-icon>
-        <fa-icon title="Youtube Channel" *ngIf="ref.type == 'youtube_channel'" [icon]="['fab', 'youtube']" [styles]="{'color': '#FF0000'}"></fa-icon>
-        <fa-icon title="Other Reference" *ngIf="ref.type == 'other'" [icon]="['fas', 'link']"></fa-icon>
+        <fa-icon title="TV Show" *ngIf="ref.type === 'tv_show'" [icon]="['fas', 'tv']"></fa-icon>
+        <fa-icon title="Video Game" *ngIf="ref.type === 'video_game'" [icon]="['fas', 'gamepad']"></fa-icon>
+        <fa-icon title="Movie" *ngIf="ref.type === 'movie'" [icon]="['fas', 'film']"></fa-icon>
+        <fa-icon title="Comedy Special" *ngIf="ref.type === 'comedy_special'" [icon]="['far', 'laugh-beam']"></fa-icon>
+        <fa-icon title="Youtube Channel" *ngIf="ref.type === 'youtube_channel'" [icon]="['fab', 'youtube']" [styles]="{'color': '#FF0000'}"></fa-icon>
+        <fa-icon title="Other Reference" *ngIf="ref.type === 'other'" [icon]="['fas', 'link']"></fa-icon>
       </div>
 
       <div>
