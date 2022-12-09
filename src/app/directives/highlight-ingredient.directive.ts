@@ -8,13 +8,13 @@ export class HighlightIngredientDirective {
   private _content: string;
   private _ingredient: any[]; // [qty, unit, name, raw]
 
-  @Input('content')
+  @Input()
   set content(content: string) {
     this._content = content;
   }
   get content(): string { return this._content; }
 
-  @Input('ingredient')
+  @Input()
   set ingredient(ingredient: any[]) {
     this._ingredient = ingredient;
     const qty = this.toQty(ingredient[0]);
