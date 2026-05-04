@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="180" viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Image loading">
+  <rect width="300" height="180" fill="#f1e8d6"/>
+  <g stroke="#a98b6f" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="150" cy="86" r="38"/>
+    <circle cx="150" cy="86" r="28"/>
+  </g>
+  <g fill="#a98b6f">
+    <g transform="translate(85 50)">
+      <rect x="6" y="0" width="3" height="22" rx="1"/>
+      <rect x="11" y="0" width="3" height="22" rx="1"/>
+      <rect x="16" y="0" width="3" height="22" rx="1"/>
+      <rect x="21" y="0" width="3" height="22" rx="1"/>
+      <rect x="13" y="22" width="4" height="50" rx="1.5"/>
+    </g>
+    <g transform="translate(190 50)">
+      <path d="M 6 0 Q 0 14 6 26 L 14 26 L 14 0 Z"/>
+      <rect x="8" y="26" width="4" height="46" rx="1.5"/>
+    </g>
+  </g>
+  <text x="150" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#a98b6f" letter-spacing="3">DATA WITH BABISH</text>
+</svg>
