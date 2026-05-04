@@ -5,7 +5,7 @@
 <div class="tiled-list">
   <div class="list-item" *ngFor="let ep of episodes | filterBy: filters" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
+    <img appLazyLoad loading="lazy" [src]="ep.image_link || placeholderImg" [lazySrc]="placeholderImg">
 
     <div class="description">
         <div class="ep-name">

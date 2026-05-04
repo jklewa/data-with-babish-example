@@ -3,7 +3,7 @@
 </div>
 
 <div class="tiled-list" *ngFor="let ref of items | filterBy: filters">
-  <a [name]="'ref-' + ref.reference_id"></a>
+  <a [id]="'ref-' + ref.reference_id"></a>
   <div class="description">
     <span class="item-name" style="font-size: 2rem;">
         <span appTextHighlight [content]="ref.name" [searchTerm]="filters.searchTerm"></span>
@@ -17,7 +17,7 @@
         </span>
     </span>
 
-    <img appLazyLoad [src]="ref.image_link" [lazySrc]="placeholderImg">
+    <img appLazyLoad loading="lazy" [src]="ref.image_link || placeholderImg" [lazySrc]="placeholderImg">
 
     <p>
         {{ ref.description }}
@@ -30,7 +30,7 @@
 
   <div class="list-item" *ngFor="let ep of ref.episodes_inspired" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
+    <img appLazyLoad loading="lazy" [src]="ep.image_link || placeholderImg" [lazySrc]="placeholderImg">
 
     <div class="description">
         <div class="ep-name">

@@ -1,40 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: 'img[appLazyLoad]'
 })
-export class LazyLoadDirective implements OnInit, AfterViewInit {
-  @HostBinding('attr.src') srcAttr;
-  @Input() src: string;
+export class LazyLoadDirective {
   @Input() lazySrc: string;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef<HTMLImageElement>) {}
 
-  ngOnInit() {
-    this.srcAttr = this.lazySrc;
-  }
-
-  ngAfterViewInit() {
-    this.canLazyLoad() ? this.lazyLoadImage() : this.loadImage();
-  }
-
-  private canLazyLoad() {
-    return window && 'IntersectionObserver' in window;
-  }
-
-  private lazyLoadImage() {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(({ isIntersecting }) => {
-        if (isIntersecting) {
-          this.loadImage();
-          obs.unobserve(this.el.nativeElement);
-        }
-      });
-    });
-    obs.observe(this.el.nativeElement);
-  }
-
-  private loadImage() {
-    this.srcAttr = this.src;
+  @HostListener('error')
+  onError() {
+    const img = this.el.nativeElement;
+    if (this.lazySrc && img.getAttribute('src') !== this.lazySrc) {
+      img.src = this.lazySrc;
+    }
   }
 }
