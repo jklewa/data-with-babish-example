@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -13,10 +15,14 @@ export class ReferenceListComponent implements OnInit {
   filters = {searchTerm: ''};
 
   items: any[];
-  placeholderImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACpAQMAAACruZLpAAAABlBMVEX///////9VfPVsAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABE0lEQVRYhe2TMU4EMQxFv00kUqxQRDVlRMUpIFBtyRE4Ccp2HIuj7BE4AFqts46oPLMVEsV/GkWT5I3HHmcAQgghhBBCyB9zwu0RH36vwA+eI0vRlyy9XyZ3Q+wtDNdqUvjWPTIENdRqHTEuPPiLY61pmhFeUWwsVzQZkdKaZunMLbVJsvzCErpk05psa3Ctqqe/osnUShqa7la03dRyHtreAi6RlqaWytDerNpQQ3dN69DebeFxq1Jprh2wD7XqGr6G1tBfPrc0j2ZaKP1qnhtWNXizvNJq2mbr/btd1bwLdSzEmp9e72mRNa1ZI2zwEzKuFkgqPS84eH2KlCBhrSfcHPE0n4F82y9ICCGEEELIf+cM7hEjlGmX1eoAAAAASUVORK5CYII=';
+  placeholderImg = 'assets/placeholder.svg';
 
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private viewportScroller: ViewportScroller,
+  ) { }
 
   ngOnInit() {
     this.getItems();
@@ -39,7 +45,13 @@ export class ReferenceListComponent implements OnInit {
       }))
     )
     .subscribe(
-      (items: any[]) => { this.items = items; },
+      (items: any[]) => {
+        this.items = items;
+        const fragment = this.route.snapshot.fragment;
+        if (fragment) {
+          setTimeout(() => this.viewportScroller.scrollToAnchor(fragment));
+        }
+      },
       (error) => { console.error('Failed to fetch items', error); });
   }
 

@@ -10,7 +10,7 @@
 
     <p>{{ ep.published_date | date:'fullDate' }}</p>
 
-    <img [src]="ep.image_link">
+    <img appLazyLoad loading="lazy" [src]="ep.image_link || 'assets/placeholder.svg'" lazySrc="assets/placeholder.svg">
 
     <div class="episode-links">
         <div class="bwb-link">

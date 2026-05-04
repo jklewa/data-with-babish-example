@@ -3,7 +3,7 @@
 </div>
 
 <div class="tiled-list" *ngFor="let guest of items | filterBy: filters">
-  <a [name]="'guest-' + guest.guest_id"></a>
+  <a [id]="'guest-' + guest.guest_id"></a>
 
   <div class="description">
     <span class="item-name" style="font-size: 2rem;">
@@ -14,7 +14,7 @@
 
   <div class="list-item" *ngFor="let ep of guest.appearances" [routerLink]="'/episodes/' + ep.episode_id">
 
-    <img appLazyLoad [src]="ep.image_link" [lazySrc]="placeholderImg">
+    <img appLazyLoad loading="lazy" [src]="ep.image_link || placeholderImg" [lazySrc]="placeholderImg">
 
     <div class="description">
         <div class="ep-name">

@@ -50,6 +50,11 @@
     flex-basis: 100%;
     text-align: center;
     margin: 20px 0 5px;
+
+    > img {
+        max-width: 300px;
+        max-height: 180px;
+    }
 }
 
 .item-name {
