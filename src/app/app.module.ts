@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
-import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 import { HighlightIngredientDirective } from './directives/highlight-ingredient.directive';
 import { GuestListComponent } from './guest-list/guest-list.component';
@@ -30,7 +29,6 @@ import { LazyLoadDirective } from './directives/lazy-load.directive';
     HighlightDirective,
     OverviewPageComponent,
     EpisodeListComponent,
-    IngredientListComponent,
     EpisodeDetailComponent,
     HighlightIngredientDirective,
     GuestListComponent,

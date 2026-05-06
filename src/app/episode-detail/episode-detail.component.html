@@ -28,14 +28,14 @@
 </div>
 
 <div class="recipe-list">
-  <div class="recipe" *ngFor="let guest of ep.related.guests">
+  <div class="recipe" *ngFor="let guest of ep.related?.guests">
     Guest
     <span class="recipe-name">{{ guest.name }}</span>
   </div>
 </div>
 
 <div class="recipe-list">
-  <div class="recipe" *ngFor="let ref of ep.related.inspired_by">
+  <div class="recipe" *ngFor="let ref of ep.related?.inspired_by">
     Inspired by
     <span class="recipe-name">
         {{ ref.name }}
@@ -51,7 +51,7 @@
 </div>
 
 <div class="recipe-list">
-  <div class="recipe" *ngFor="let recipe of ep.related.recipes">
+  <div class="recipe" *ngFor="let recipe of ep.related?.recipes">
     <span class="recipe-name">{{ recipe.name }}</span>
     <span class="muted"> ({{ recipe.ingredient_list.length }} items)</span>
     <div style="display: flex;">
@@ -60,7 +60,7 @@
                 <div appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
             </li>
         </ul>
-        <ol style="flex: 2">
+        <ol style="flex: 2" *ngIf="recipe.raw_procedure && recipe.raw_procedure.trim()">
             <li *ngFor="let step of recipe.raw_procedure.split('\n')">
                 {{ step }}
             </li>

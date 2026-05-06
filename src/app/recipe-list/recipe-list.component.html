@@ -19,7 +19,7 @@
                  appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
             </li>
         </ul>
-        <ol style="flex: 2">
+        <ol style="flex: 2" *ngIf="recipe.raw_procedure && recipe.raw_procedure.trim()">
             <li *ngFor="let step of recipe.raw_procedure.split('\n')">
                 {{ step }}
             </li>

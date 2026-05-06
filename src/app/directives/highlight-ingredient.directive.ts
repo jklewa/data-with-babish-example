@@ -32,8 +32,9 @@ export class HighlightIngredientDirective {
   highlight(searchTerm: string, cssClass: string) {
     const splitFlags = 'i';
     const matchFlags = 'gi';
-    const searchPattern = new RegExp('<.*?>.*?>|(?:' + searchTerm + ')', splitFlags);
-    const matchPattern =  new RegExp('<.*?>.*?>|(?:' + searchTerm + ')', matchFlags);
+    const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const searchPattern = new RegExp('<.*?>.*?>|(?:' + escaped + ')', splitFlags);
+    const matchPattern =  new RegExp('<.*?>.*?>|(?:' + escaped + ')', matchFlags);
     const spanStart = '<span class="' + cssClass + '">';
     const spanEnd = '</span>';
     let final = '';

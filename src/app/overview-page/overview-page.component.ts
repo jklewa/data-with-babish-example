@@ -64,8 +64,8 @@ export class OverviewPageComponent implements OnInit {
     ...ep.related.recipes.map(i => i.name),
     ...ep.related.guests.map(i => i.name),
     ...ep.related.inspired_by.map(i => i.name),
-    ep.related.show.name,
-  ].map((t: string) => t.toLowerCase()).join('|')
+    ep.related.show?.name,
+  ].filter(Boolean).map((t: string) => t.toLowerCase()).join('|')
 
 
 
@@ -141,6 +141,7 @@ export class OverviewPageComponent implements OnInit {
         const parts = i.source.name.split(/ inspired by | from /);
         i.source.episode_name_pt1 = parts[0];
         i.source.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
+        i.ingredient_list = (i.raw_ingredient_list || '').split('\n').filter(Boolean).map(line => ['', '', line, line]);
         i.searchTerm = this.recipeSearchTerm(i);
         return i;
       }).sort((a, b) => {
