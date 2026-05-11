@@ -14,9 +14,7 @@
       <div style="display: flex;">
         <ul style="flex: 1">
             <li class="ingredient" *ngFor="let ing of recipe.ingredient_list">
-                <div
-                 appTextHighlight [searchTerm]="filters.searchTerm"
-                 appHighlightIngredient [content]="ing[3]" [ingredient]="ing"></div>
+                <div appTextHighlight [content]="ing" [searchTerm]="filters.searchTerm"></div>
             </li>
         </ul>
         <ol style="flex: 2" *ngIf="recipe.raw_procedure && recipe.raw_procedure.trim()">

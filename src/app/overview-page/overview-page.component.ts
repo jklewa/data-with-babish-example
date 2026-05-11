@@ -141,7 +141,7 @@ export class OverviewPageComponent implements OnInit {
         const parts = i.source.name.split(/ inspired by | from /);
         i.source.episode_name_pt1 = parts[0];
         i.source.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
-        i.ingredient_list = (i.raw_ingredient_list || '').split('\n').filter(Boolean).map(line => ['', '', line, line]);
+        i.ingredient_list = (i.raw_ingredient_list || '').split('\n').filter(Boolean);
         i.searchTerm = this.recipeSearchTerm(i);
         return i;
       }).sort((a, b) => {
@@ -156,7 +156,7 @@ export class OverviewPageComponent implements OnInit {
   recipeSearchTerm = recipe => [
     recipe.name,
     recipe.source.name,
-    ...recipe.ingredient_list.map(([qty, unit, name, raw]) => name),
+    ...recipe.ingredient_list,
   ].map((t: string) => t.toLowerCase()).join('|')
 
   chunk(input: any[], size: number): any[] {

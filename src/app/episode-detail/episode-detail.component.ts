@@ -33,7 +33,7 @@ export class EpisodeDetailComponent implements OnInit {
         ep.episode_name_pt1 = parts[0];
         ep.episode_name_pt2 = parts.length > 1 ? parts[1] : '';
         ep.related.recipes.forEach(recipe => {
-          recipe.ingredient_list = (recipe.raw_ingredient_list || '').split('\n').filter(Boolean).map(line => ['', '', line, line]);
+          recipe.ingredient_list = (recipe.raw_ingredient_list || '').split('\n').filter(Boolean);
         });
         return ep;
       })),
